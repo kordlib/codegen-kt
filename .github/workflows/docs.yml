@@ -31,9 +31,8 @@ jobs:
           arguments: dokkaHtmlMultiModule
       - name: Reorder file structure
         run: |
-          shopt -s extglob
-          rm -rf !(build)
-          mv build/* .
+          find ./ -mindepth 1 ! -regex '^./docs\(/.*\)?' -delete
+          mv docs/* .
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
         env:
