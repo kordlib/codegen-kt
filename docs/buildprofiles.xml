@@ -4,7 +4,7 @@
         <enable-browser-edits>true</enable-browser-edits>
         <browser-edits-url>https://github.com/kordlib/codegen.kt/edit/main/docs/</browser-edits-url>
     </variables>
-    <build-profile instance="kord"/>
+    <build-profile instance="codegen.kt"/>
     <footer>
         <copyright>Kord Team 2019-2023</copyright>
         <link href="https://github.com/kordlib">GitHub</link>
