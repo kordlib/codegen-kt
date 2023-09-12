@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://helpserver.labs.jb.gg/help/schemas/mvp/html-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://helpserver.labs.jb.gg/help/schemas/mvp/topic.v2.xsd"
+       title="Codegen.kt" id="about">
+
+    <section-starting-page>
+        <title>Codegen.kt</title>
+        <description>A code generator for writing code generators</description>
+
+        <spotlight>
+            <a href="kotlinpoet.md" summary="Generate Kotlin source code with the Kotlinpoet DSL" type="development"/>
+            <a href="ksp.md" summary="Write symbol processors with KSP" type="computer"/>
+        </spotlight>
+
+        <primary>
+            <title>Best practices</title>
+            <a href="member-naming.md" summary="How to name class members in a type safe way"/>
+            <a href="processor-annotations.md" summary="How to access annotation arguments in a type-safe way"/>
+        </primary>
+
+        <secondary>
+            <title>External documentations</title>
+            <a href="https://square.github.io/kotlinpoet/" summary="Kotlinpoet documentation"/>
+            <a href="https://kotlinlang.org/docs/ksp-quickstart.html" summary="KSP Documentation"/>
+        </secondary>
+    </section-starting-page>
+
+
+</topic>

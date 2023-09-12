@@ -26,7 +26,7 @@ public fun Enum<*>.asMemberName(): MemberName = declaringJavaClass.asClassName()
  * Converts a reference to a callable (Property or function) to a [MemberName].
  *
  * ```kotlin
- * val STRING_PLUS = * String::plus.asMemberName()
+ * val STRING_PLUS = String::plus.asMemberName()
  * ```
  */
 @DelicateKotlinPoetApi(message = "This API uses internal Kotlin reflection APIs and might break at any time")
