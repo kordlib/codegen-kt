@@ -1,7 +1,6 @@
 plugins {
     org.jetbrains.kotlin.multiplatform
     com.google.devtools.ksp
-    `kord-publishing`
 }
 
 kotlin {
