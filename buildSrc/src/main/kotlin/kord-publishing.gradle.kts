@@ -15,6 +15,8 @@ tasks {
             suppressGeneratedFiles = false
             jdkVersion = 8
 
+            includes.from(layout.projectDirectory.file("README.md"))
+
             externalDocumentationLink("https://square.github.io/kotlinpoet/1.x/kotlinpoet/kotlinpoet/")
 
             sourceLink {
