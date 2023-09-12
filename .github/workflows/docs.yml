@@ -23,7 +23,7 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
-          vendor: "temurin"
+          distribution: "temurin"
           version: 11
       - name: Build Dokka
         uses: gradle/gradle-build-action@v2
