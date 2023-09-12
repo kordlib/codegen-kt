@@ -18,6 +18,8 @@ jobs:
   build-dokka:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
