@@ -29,14 +29,14 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: dokkaHtmlMultiModule
-      - name: Reorder file structure
-        run: |
-          find ./ -mindepth 1 ! -regex '^./docs\(/.*\)?' -delete
-          mv docs/* .
+#      - name: Reorder file structure
+#        run: |
+#          find ./ -mindepth 1 ! -regex '^./docs\(/.*\)?' -delete
+#          mv docs/* .
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
         env:
-          PRODUCT: codegen-kt/c
+          PRODUCT: docs/c
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
