@@ -64,7 +64,7 @@ public data class InlineConstructor private constructor(
 }
 ```
 
-> You can find the full code [here]()
+> You can find the full code [here](https://github.com/kordlib/codegen-kt/blob/main/ksp-annotations/src/commonMain/kotlin/InlineConstructor.kt)
 
 
-Please read the documentation of the `ProcessorAnnotation` annotation [here]()
+Please read the documentation of the `ProcessorAnnotation` annotation [here](https://codegen.kord.dev/api/ksp/dev.kord.codegen.ksp.annotations/-processor-annotation/index.html)

@@ -19,4 +19,4 @@ fun KSAnnotation.process() {
 }
 ```
 
-Full documentation can be found [here]()
+Full documentation can be found [here](https://codegen.kord.dev/api/ksp/dev.kord.codegen.ksp.annotations/index.html)
