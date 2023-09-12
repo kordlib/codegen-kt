@@ -17,6 +17,6 @@
         </toc-element>
     </toc-element>
     <toc-element toc-title="API Reference" target-for-accept-web-file-names="https://codegen.kord.dev/api"/>
-    <toc-element toc-title="Kotlinpoet documentation" target-for-accept-web-file-names="https://square.github.io/kotlinpoet/"/>
+    <toc-element toc-title="KotlinPoet documentation" target-for-accept-web-file-names="https://square.github.io/kotlinpoet/"/>
     <toc-element toc-title="KSP documentation" target-for-accept-web-file-names="https://kotlinlang.org/docs/ksp-quickstart.html"/>
 </instance-profile>

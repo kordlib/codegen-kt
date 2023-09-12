@@ -1,4 +1,4 @@
-# Kotlinpoet DSL
+# KotlinPoet DSL
 
 <var name="artifactName" value="kotlinpoet"/>
 <var name="annotationProcessor" value="❌"/>
@@ -7,12 +7,12 @@
 
 ## DSL types
 
-The entire Kotlinpoet DSL is generated from the normal Kotlinpoet source code, therefore, there are certain types of
+The entire KotlinPoet DSL is generated from the normal KotlinPoet source code, therefore, there are certain types of
 generated DSL functions, which also allows you to know what code you can migrate to the DSL and what stays the same
 
 ### Factory functions {id="factory_functions"}
 
-Almost everything in Kotlinpoet is represented by an immutable "spec-class" and one or more corresponding constructor
+Almost everything in KotlinPoet is represented by an immutable "spec-class" and one or more corresponding constructor
 functions in its companion object, which return a builder, these will simply be replaced by a top-level factory function
 which takes the name of the spec class and takes a builder
 
@@ -56,7 +56,7 @@ AnnotationSpec(Suppress("UNUSED"))
 ```
 
 ### Scoping functions
-Some functions in Kotlinpoet allow you to `begin` and `end` some sort of scope like a control flow in a CodeBlock or 
+Some functions in KotlinPoet allow you to `begin` and `end` some sort of scope like a control flow in a CodeBlock or 
 similar, these are what we refer to as scoping functions in the generator
 
 ```kotlin
@@ -77,7 +77,7 @@ CodeBlock {
 ```
 
 ### Constructor inlining
-The Kotlinpoet API always allows you to add "spec-types" to other "spec-types" (e.g. TypeSpec.addType() is for adding
+The KotlinPoet API always allows you to add "spec-types" to other "spec-types" (e.g. TypeSpec.addType() is for adding
 classes, interfaces, etc.), however in most cases you only construct that spec type to immediately add it to another
 spec, therefore we do something we call "constructor-inlining", where we take the [Factory function](#factory_functions)
 and generate a version of the "addSpec" function to directly call the constructor

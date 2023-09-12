@@ -10,7 +10,7 @@
         <description>A code generator for writing code generators</description>
 
         <spotlight>
-            <a href="kotlinpoet.md" summary="Generate Kotlin source code with the Kotlinpoet DSL" type="development"/>
+            <a href="kotlinpoet.md" summary="Generate Kotlin source code with the KotlinPoet DSL" type="development"/>
             <a href="ksp.md" summary="Write symbol processors with KSP" type="computer"/>
         </spotlight>
 
@@ -22,7 +22,7 @@
 
         <secondary>
             <title>External documentations</title>
-            <a href="https://square.github.io/kotlinpoet/" summary="Kotlinpoet documentation"/>
+            <a href="https://square.github.io/kotlinpoet/" summary="KotlinPoet documentation"/>
             <a href="https://kotlinlang.org/docs/ksp-quickstart.html" summary="KSP Documentation"/>
         </secondary>
     </section-starting-page>
