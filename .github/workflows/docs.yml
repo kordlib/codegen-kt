@@ -31,6 +31,8 @@ jobs:
           arguments: dokkaHtmlMultiModule
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
+        env:
+          PRODUCT: codegen-kt/c
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
