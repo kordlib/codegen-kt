@@ -15,11 +15,9 @@ env:
   ALGOLIA_ARTIFACT: algolia-indexes-XX.zip
 
 jobs:
-  build-job:
+  build-dokka:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
@@ -29,6 +27,17 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: dokkaHtmlMultiModule
+      - name: Upload documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: dokka
+          path: docs/api
+          retention-days: 7
+  build-writerside:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
       - name: Upload documentation
@@ -50,13 +59,18 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # Requires the build-job results
-    needs: build-job
+    needs: [build-writerside, build-dokka]
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
+      - name: Download webhelp
         uses: actions/download-artifact@v3
         with:
           name: help
+      - name: Download dokka
+        uses: actions/download-artifact@v3
+        with:
+          name: dokka
+          path: dir/api
       - name: Unzip artifact
         uses: montudor/action-zip@v1
         with:
