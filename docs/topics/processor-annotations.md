@@ -1,3 +1,0 @@
-# Processor annotations
-
-Start typing here...

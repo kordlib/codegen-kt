@@ -17,7 +17,7 @@
         <primary>
             <title>Best practices</title>
             <a href="member-naming.md" summary="How to name class members in a type safe way"/>
-            <a href="processor-annotations.md" summary="How to access annotation arguments in a type-safe way"/>
+            <a href="Annotation-Argument-Processor.md" summary="How to access annotation arguments in a type-safe way"/>
         </primary>
 
         <secondary>
