@@ -10,8 +10,8 @@ permissions:
   pages: write
 
 env:
-  PRODUCT: docs/kord
-  DOC_ARTIFACT: webHelpKORD2-all.zip
+  PRODUCT: docs/c
+  DOC_ARTIFACT: webHelpC2-all.zip
   ALGOLIA_ARTIFACT: algolia-indexes-XX.zip
 
 jobs:
@@ -35,8 +35,6 @@ jobs:
 #          mv docs/* .
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
-        env:
-          PRODUCT: docs/c
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
