@@ -7,12 +7,13 @@
                  start-page="about.topic">
 
     <toc-element topic="about.topic">
+        <toc-element topic="kotlinpoet.md">
+            <toc-element topic="member-naming.md"/>
+            <toc-element topic="utility-functions.md"/>
+             </toc-element>
         <toc-element topic="ksp.md">
             <toc-element topic="Annotation-Argument-API.md"/>
             <toc-element topic="Annotation-Argument-Processor.md"/>
-        </toc-element>
-        <toc-element topic="kotlinpoet.md">
-            <toc-element topic="member-naming.md"/><toc-element topic="utility-functions.md"/>
         </toc-element>
     </toc-element>
     <toc-element toc-title="API Reference" target-for-accept-web-file-names="https://codegen.kord.dev/api"/>
