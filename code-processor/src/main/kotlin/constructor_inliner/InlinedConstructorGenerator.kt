@@ -5,9 +5,12 @@ package dev.kord.codegen.generator.constructor_inliner
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
+import com.squareup.kotlinpoet.jvm.jvmWildcard
 import com.squareup.kotlinpoet.ksp.toClassName
 import dev.kord.codegen.generator.utils.*
 import dev.kord.codegen.generator.builder_functions.FactoryFunction
+import dev.kord.codegen.kotlinpoet.FunSpec
+import dev.kord.codegen.kotlinpoet.withControlFlow
 
 context(FactoryFunction)
 private fun FunSpec.Builder.getValueParametersList(packageName: String): CodeBlock {
@@ -72,16 +75,16 @@ fun FactoryFunction.generateInlinedConstructorWithNameDelegate(
     returns(SUB_SPEC_DELEGATE_PROVIDER.parameterizedBy(specType.toClassName()))
 
     val code = buildCodeBlock {
-        beginControlFlow("return·%M { %L ->", PRODUCE_BY_NAME, constructor.nameProperty)
-        addStatement(
-            "%L(%L).also(::%L)",
-            builderFunctionName.takeIf { !constructor.useQualifiedName }
-                ?.escapeIfNecessary()
-                ?: "$packageName.$builderFunctionName",
-            valueParameterList,
-            constructor.functionName,
-        )
-        endControlFlow()
+        withControlFlow("return·%M { %L ->", PRODUCE_BY_NAME, constructor.nameProperty) {
+            addStatement(
+                "%L(%L).also(::%L)",
+                builderFunctionName.takeIf { !constructor.useQualifiedName }
+                    ?.escapeIfNecessary()
+                    ?: "$packageName.$builderFunctionName",
+                valueParameterList,
+                constructor.functionName,
+            )
+        }
     }
 
     addCode(code)
@@ -105,8 +108,12 @@ private fun FactoryFunction.generateInlinedConstructor(
     }
     val builderParameter = getBuilderParameter(packageName)
 
-    return FunSpec.builder(name).apply {
-        receiver(constructor.forClass.toClassName())
+    return FunSpec(name) {
+        if (constructor.forClass.declaration.typeParameters.isNotEmpty()) {
+            receiver(constructor.forClass.toClassName().parameterizedBy(STAR))
+        } else {
+            receiver(constructor.forClass.toClassName())
+        }
 
         if (hasBuilder) {
             if (!noinline) {
@@ -120,5 +127,5 @@ private fun FactoryFunction.generateInlinedConstructor(
         if (hasBuilder) {
             addParameter(builderParameter)
         }
-    }.build()
+    }
 }

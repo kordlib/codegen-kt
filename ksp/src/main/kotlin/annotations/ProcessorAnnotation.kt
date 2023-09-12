@@ -36,6 +36,7 @@ import com.google.devtools.ksp.symbol.KSAnnotation
 @MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.ANNOTATION_CLASS)
+@ProcessorAnnotation(packageName = "dev.kord.codegen.ksp.processor")
 public annotation class ProcessorAnnotation(
     val packageName: String
 )

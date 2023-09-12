@@ -8,6 +8,8 @@ import com.squareup.kotlinpoet.ksp.*
 import dev.kord.codegen.generator.utils.addAnnotationsFromFunction
 import dev.kord.codegen.generator.utils.toParameterSpec
 import dev.kord.codegen.generator.utils.toTypeParameterResolver
+import dev.kord.codegen.kotlinpoet.CodeBlock
+import dev.kord.codegen.kotlinpoet.FunSpec
 import java.lang.reflect.Modifier
 import kotlin.reflect.KClass
 
@@ -32,7 +34,7 @@ val TYPE_NAME_OF = MemberName("com.squareup.kotlinpoet", "typeNameOf")
 fun MaybeReifiableFunction.reify(): FunSpec {
     val nameAllocator = NameAllocator()
 
-    return FunSpec.builder(simpleName.asString()).apply {
+    return FunSpec(simpleName.asString()) {
         addModifiers(KModifier.INLINE)
         // If the parent of the function is a class,
         // we need to define the reified function as an extension of that class
@@ -55,7 +57,9 @@ fun MaybeReifiableFunction.reify(): FunSpec {
             }
         } else if (extensionReceiver != null) {
             // otherwise, just use the receiver of the actual function
-            receiver(extensionReceiver.toTypeName())
+            if (!extensionReceiver.resolve().isError) {
+                receiver(extensionReceiver.toTypeName())
+            }
         }
 
         val typeVariableResolver = typeVariables.toTypeParameterResolver()
@@ -91,7 +95,7 @@ fun MaybeReifiableFunction.reify(): FunSpec {
                     else -> error("Unreifiable type: ${it.type}")
                 }
             } else {
-                buildCodeBlock {
+                CodeBlock {
                     if (KModifier.VARARG in it.modifiers) {
                         add("%N·=·", it)
                     }
@@ -102,7 +106,7 @@ fun MaybeReifiableFunction.reify(): FunSpec {
 
         addAnnotationsFromFunction(this@reify)
         addCode("return·%N(%L)", simpleName.asString(), valueParameters)
-    }.build()
+    }
 }
 
 @PublishedApi

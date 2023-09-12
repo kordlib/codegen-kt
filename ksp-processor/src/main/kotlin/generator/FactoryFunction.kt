@@ -5,20 +5,22 @@ import com.google.devtools.ksp.symbol.KSAnnotation
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ksp.toClassName
+import dev.kord.codegen.kotlinpoet.addFunction
+import dev.kord.codegen.kotlinpoet.addParameter
+import dev.kord.codegen.kotlinpoet.withControlFlow
 import dev.kord.codegen.ksp.processor.ARGUMENTS
 import dev.kord.codegen.ksp.processor.ARGUMENTS_NOT_NULL
 import dev.kord.codegen.ksp.processor.NULL_IF_DEFAULT
 
-
-fun KSClassDeclaration.factoryFunction(packageName: String): FunSpec {
-    return FunSpec.builder(simpleName.asString()).apply {
+context(TypeSpec.Builder)
+fun KSClassDeclaration.factoryFunction(packageName: String) {
+    addFunction(simpleName.asString()) {
         val type = ClassName(packageName, toClassName().simpleNames)
         addKdoc("Creates an [%T] from an [%T].", type, KSAnnotation::class.asClassName())
-        val param = ParameterSpec.builder("annotation", KSAnnotation::class.asClassName()).build()
-        addParameter(param)
+        val annotation by addParameter<KSAnnotation>()
         returns(type)
 
-        addStatement("val arguments = %N.%M<%T>().%M()", param, ARGUMENTS, toClassName(), ARGUMENTS_NOT_NULL)
+        addStatement("val arguments = %N.%M<%T>().%M()", annotation, ARGUMENTS, toClassName(), ARGUMENTS_NOT_NULL)
         addCode("\n")
         val valueArguments = getDeclaredProperties().map {
             val property = buildCodeBlock {
@@ -40,10 +42,10 @@ fun KSClassDeclaration.factoryFunction(packageName: String): FunSpec {
                 }
 
                 if (it.annotations.any { it.annotationType.resolve().declaration.qualifiedName!!.asString() == NULL_IF_DEFAULT }) {
-                    beginControlFlow(".takeIf")
-                    add("!arguments.isDefault(%T::%L)", toClassName(), it.simpleName.asString())
-                    add("\n")
-                    endControlFlow()
+                    withControlFlow(".takeIf") {
+                        add("!arguments.isDefault(%T::%L)", toClassName(), it.simpleName.asString())
+                        add("\n")
+                    }
                 }
                 add("\n")
             }
@@ -51,5 +53,5 @@ fun KSClassDeclaration.factoryFunction(packageName: String): FunSpec {
             CodeBlock.of("%L", it.simpleName.asString())
         }.joinToString(", ")
         addCode("return·%T(%L)", type, valueArguments)
-    }.build()
+    }
 }

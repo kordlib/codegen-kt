@@ -7,7 +7,8 @@ import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
-import dev.kord.codegen.ksp.processor.PROCESSOR_ANNOTATION
+import dev.kord.codegen.kotlinpoet.FileSpec
+import dev.kord.codegen.ksp.processor.getProcessorAnnotation
 
 data class ProcessingContext(
     val environment: SymbolProcessorEnvironment,
@@ -18,17 +19,16 @@ data class ProcessingContext(
 
 @OptIn(DelicateKotlinPoetApi::class)
 fun SymbolProcessorEnvironment.processAnnotation(declaration: KSClassDeclaration) {
-    val packageName =
-        declaration.annotations.first { it.annotationType.resolve().declaration.qualifiedName?.asString() == PROCESSOR_ANNOTATION }
-            .arguments.first().value as String
-    val fileSpec = FileSpec.builder(packageName, declaration.simpleName.asString()).apply {
+    val packageName = declaration.getProcessorAnnotation().packageName
+    val fileSpec = FileSpec(packageName, declaration.simpleName.asString()) {
         addKotlinDefaultImports(includeJs = false)
         addAnnotation(AnnotationSpec.get(Suppress("DataClassPrivateConstructor")))
         addAliasedImport(declaration.toClassName(), "Annotation")
-    }
-    val context = ProcessingContext(this, fileSpec, declaration, packageName)
-    context.dataClassRepresentation()
-    context.accessorFunction()
 
-    fileSpec.build().writeTo(codeGenerator, false)
+        val context = ProcessingContext(this@processAnnotation, this, declaration, packageName)
+        context.dataClassRepresentation()
+        context.accessorFunction()
+    }
+
+    fileSpec.writeTo(codeGenerator, false)
 }

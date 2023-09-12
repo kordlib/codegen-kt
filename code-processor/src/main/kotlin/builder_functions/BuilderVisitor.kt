@@ -10,6 +10,9 @@ import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.packageName
 import dev.kord.codegen.generator.utils.*
 import dev.kord.codegen.generator.visitors.VisitorBase
+import dev.kord.codegen.kotlinpoet.AnnotationSpec
+import dev.kord.codegen.kotlinpoet.LambdaTypeName
+import dev.kord.codegen.kotlinpoet.TypeAliasSpec
 import dev.kord.codegen.ksp.companionDeclaration
 
 /**
@@ -46,12 +49,11 @@ object BuilderVisitor : VisitorBase() {
 
         val addBuilder = RunOnceFunction<FileSpec.Builder, String> { file, builderName ->
             file.optInForContracts()
-            val alias = LambdaTypeName.get(
+            val alias = LambdaTypeName(
                 classDeclaration.toClassName().nestedClass("Builder"),
                 returnType = UNIT
-            ).copy(annotations = listOf(AnnotationSpec.builder(CODEGEN_DSL).build()))
-            val typeAliasSpec =
-                TypeAliasSpec.builder(builderName, alias).build()
+            ).copy(annotations = listOf(AnnotationSpec(CODEGEN_DSL)))
+            val typeAliasSpec = TypeAliasSpec(builderName, alias)
             file.members.add(0, typeAliasSpec)
         }
 

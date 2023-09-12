@@ -37,17 +37,6 @@ fun KSValueParameter.toParameterSpec(typeParamResolver: TypeParameterResolver = 
         }
         .build()
 
-fun KSFunctionDeclaration.toFunSpec(typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY) =
-    FunSpec.builder(simpleName.asString())
-        .apply {
-            val declarationTypeResolver = parentDeclaration!!.typeParameters.toTypeParameterResolver()
-            val functionResolver = typeParameters.toTypeParameterResolver(declarationTypeResolver)
-            addParameters(this@toFunSpec.parameters.map { it.toParameterSpec(functionResolver) })
-            addModifiers(this@toFunSpec.modifiers.mapNotNull(Modifier::toKModifier))
-            returns(ANY)
-            returns(returnType!!.toTypeName(parentDeclaration!!.typeParameters.toTypeParameterResolver(typeParamResolver)))
-        }.build()
-
 private val KSValueParameter.modifiers: Set<KModifier>
     get() = buildSet {
         if (this is KSModifierListOwner) {

@@ -1,6 +1,5 @@
 package dev.kord.codegen.kotlinpoet.delegate
 
-import dev.kord.codegen.kotlinpoet.CodeGenInternal
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -20,8 +19,7 @@ import kotlin.reflect.KProperty
  * val name = "Kodee"
  * ```
  */
-@CodeGenInternal
-public class SubSpecDelegateProvider<T>(private val creator: (String) -> T) {
+public class SubSpecDelegateProvider<T> internal constructor(private val creator: (String) -> T) {
     public operator fun provideDelegate(thisRef: Any?, property: KProperty<*>): ReadOnlyProperty<Any?, T> =
         SubSpecDelegate(creator(property.name))
 }

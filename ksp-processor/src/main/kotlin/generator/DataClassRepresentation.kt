@@ -1,16 +1,15 @@
 package dev.kord.codegen.ksp.processor.generator
 
 import com.google.devtools.ksp.getDeclaredProperties
-import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.ksp.addOriginatingKSFile
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.toTypeName
+import dev.kord.codegen.kotlinpoet.*
 import dev.kord.codegen.ksp.processor.NULL_IF_DEFAULT
 import dev.kord.codegen.ksp.processor.PROCESSOR_ANNOTATION
-import java.util.logging.Logger
 
 fun KSType.isMappedAnnotation(rootType: KSClassDeclaration): Boolean {
     val declaration = declaration
@@ -70,7 +69,7 @@ private fun KSClassDeclaration.dataClassSpec(
     packageName: String,
     additionalBuilder: TypeSpec.Builder.() -> Unit = {}
 ): TypeSpec {
-    return TypeSpec.classBuilder(simpleName.asString()).apply {
+    return `class`(simpleName.asString()) {
         addKdoc(
             """Data class representation of [%T].
             |@see Companion.%L
@@ -82,27 +81,25 @@ private fun KSClassDeclaration.dataClassSpec(
             .forEach {
                 addType(it.dataClassSpec(packageName))
             }
+
         addModifiers(KModifier.DATA)
-        val primaryConstructor = FunSpec.constructorBuilder()
-            .addModifiers(KModifier.PRIVATE)
-        this@dataClassSpec.getDeclaredProperties().forEach {
-            val name = it.simpleName.asString()
-            val type = it.dataClassType(this@dataClassSpec)
-            val parameter = ParameterSpec.builder(name, type).build()
-            primaryConstructor.addParameter(parameter)
-            val property = PropertySpec.builder(name, type).apply {
-                initializer("%N", parameter)
+        primaryConstructor {
+            addModifiers(KModifier.PRIVATE)
+            this@dataClassSpec.getDeclaredProperties().forEach {
+                val name = it.simpleName.asString()
+                val type = it.dataClassType(this@dataClassSpec)
+                val parameter = addParameter(name, type) {}
+                this@`class`.addProperty(name, type) {
+                    initializer("%N", parameter)
+                }
             }
-            addProperty(property.build())
         }
-        primaryConstructor(primaryConstructor.build())
         additionalBuilder()
 
-        val companion = TypeSpec.companionObjectBuilder()
-            .addFunction(factoryFunction(packageName))
-            .build()
-        addType(companion)
-    }.build()
+        addCompanionObject {
+            factoryFunction(packageName)
+        }
+    }
 }
 
 

@@ -2,8 +2,8 @@ package dev.kord.codegen.generator.utils
 
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.MemberName.Companion.member
+import dev.kord.codegen.kotlinpoet.addAnnotation
 import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.InvocationKind
 
 private val OPT_IN = ClassName("kotlin", "OptIn")
 private val CONTRACT = MemberName("kotlin.contracts", "contract")
@@ -26,9 +26,7 @@ fun FunSpec.Builder.addCallsInPlaceExactlyOnce(builderProperty: ParameterSpec) {
  * Adds the required opt-in for [ExperimentalContracts].
  */
 fun Annotatable.Builder<*>.optInForContracts() {
-    addAnnotation(
-        AnnotationSpec.builder(OPT_IN)
-            .addMember("%T::class", ClassName("kotlin.contracts", "ExperimentalContracts"))
-            .build()
-    )
+    addAnnotation(OPT_IN) {
+        addMember("%T::class", ClassName("kotlin.contracts", "ExperimentalContracts"))
+    }
 }

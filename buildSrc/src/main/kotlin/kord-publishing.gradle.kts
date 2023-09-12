@@ -47,7 +47,7 @@ tasks {
 
 mavenPublishing {
     publishToMavenCentral()
-    if (false) {
+    if (!System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKey").isNullOrBlank()) {
         signAllPublications()
     }
 
@@ -82,6 +82,13 @@ plugins.withId("org.jetbrains.kotlin.multiplatform") {
 
         withType<PublishToMavenRepository> {
             enabled = name == "publishMavenPublicationToMavenRepository"
+                || name == "publishMavenPublicationToMavenCentralRepository"
+        }
+
+        // Theoretically, this makes us loose information, however, that information is not relevant, since this is
+        // pretty much only a JVM lib targeting JVM 1.8 (so validation of that is unnecessary)
+        withType<GenerateModuleMetadata> {
+            enabled = false
         }
     }
 }

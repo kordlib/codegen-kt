@@ -5,6 +5,7 @@ import com.google.devtools.ksp.findActualType
 import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.*
+import dev.kord.codegen.ksp.processor.getProcessorAnnotation
 
 /**
  * Get all symbols with specified annotation.
@@ -36,7 +37,6 @@ public inline fun <reified A : Annotation> KSAnnotated.getAnnotationsByType(): S
  *
  * @see getAnnotationsByType
  */
-@KspExperimental
 public inline fun <reified A : Annotation> KSAnnotated.getAnnotationByType(): KSAnnotation =
     getAnnotationsByType<A>().first()
 
@@ -97,4 +97,3 @@ public val KSReferenceElement.isClassifierReference: Boolean
         is KSParenthesizedReference -> element.isClassifierReference
         else -> error("Unexpected KSReferenceElement: $this")
     }
-

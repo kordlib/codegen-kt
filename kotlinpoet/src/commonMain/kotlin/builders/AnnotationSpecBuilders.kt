@@ -1,15 +1,9 @@
 @file:InlineConstructor(
-    forClass = TypeSpec.Builder::class,
-    functionName = "addAnnotation"
-)
-
-@file:InlineConstructor(
-    forClass = FileSpec.Builder::class,
+    forClass = Annotatable.Builder::class,
     functionName = "addAnnotation"
 )
 
 package dev.kord.codegen.kotlinpoet.builders
 
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.Annotatable
 import dev.kord.codegen.ksp.annotations.InlineConstructor
