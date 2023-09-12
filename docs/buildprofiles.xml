@@ -2,7 +2,7 @@
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
         <enable-browser-edits>true</enable-browser-edits>
-        <browser-edits-url>https://github.com/kordlib/codegen.kt/edit/main/docs/</browser-edits-url>
+        <browser-edits-url>https://github.com/kordlib/codegen-kt/edit/main/docs/</browser-edits-url>
     </variables>
     <build-profile instance="codegen.kt"/>
     <footer>
