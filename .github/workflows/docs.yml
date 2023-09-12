@@ -29,10 +29,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: dokkaHtmlMultiModule
-#      - name: Reorder file structure
-#        run: |
-#          find ./ -mindepth 1 ! -regex '^./docs\(/.*\)?' -delete
-#          mv docs/* .
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
       - name: Upload documentation
