@@ -1,0 +1,19 @@
+[versions]
+kotlin = "1.9.10"
+kotlinpoet = "1.14.2"
+ksp = "1.9.10-1.0.13"
+
+[libraries]
+ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
+kotlinpoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
+
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.7" }
+
+kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
+dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "1.9.0" }
+maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
+
+[bundles]
+pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin"]

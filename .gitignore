@@ -1,0 +1,12 @@
+.fleet/
+.gradle/
+.idea/
+out/
+
+# Dokka
+docs/api
+
+**/build/*
+!kotlinpoet/build/generated/
+# re-exclude BuildConfigGenerated.kt
+common/build/generated/sources/buildConfig/main/dev/kord/common/BuildConfigGenerated.kt
