@@ -7,6 +7,7 @@ import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
 plugins {
     org.jetbrains.dokka
     id("com.vanniktech.maven.publish.base")
+    org.jetbrains.kotlinx.`binary-compatibility-validator`
 }
 
 tasks {

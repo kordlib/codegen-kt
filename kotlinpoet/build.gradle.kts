@@ -27,8 +27,4 @@ tasks {
     withType<KotlinJvmTest> {
         useJUnitPlatform()
     }
-
-//    dokkaHtmlMultiModule {
-//
-//    }
 }

@@ -1,0 +1,54 @@
+public final class dev/kord/codegen/ksp/processor/NamesKt {
+	public static final field NULL_IF_DEFAULT Ljava/lang/String;
+	public static final field PROCESSOR_ANNOTATION Ljava/lang/String;
+	public static final fun getARGUMENTS ()Lcom/squareup/kotlinpoet/MemberName;
+	public static final fun getARGUMENTS_NOT_NULL ()Lcom/squareup/kotlinpoet/MemberName;
+	public static final fun getGET_ANNOTATIONS_BY_TYPE ()Lcom/squareup/kotlinpoet/MemberName;
+	public static final fun getGET_ANNOTATION_BY_TYPE ()Lcom/squareup/kotlinpoet/MemberName;
+}
+
+public final class dev/kord/codegen/ksp/processor/ProcessorAnnotationProcessor : com/google/devtools/ksp/processing/SymbolProcessor {
+	public synthetic fun <init> (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun process (Lcom/google/devtools/ksp/processing/Resolver;)Ljava/util/List;
+}
+
+public final class dev/kord/codegen/ksp/processor/ProcessorAnnotationProcessor$Provider : com/google/devtools/ksp/processing/SymbolProcessorProvider {
+	public fun <init> ()V
+	public fun create (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;)Lcom/google/devtools/ksp/processing/SymbolProcessor;
+}
+
+public final class dev/kord/codegen/ksp/processor/generator/AccessorFunctionsKt {
+	public static final fun accessorFunction (Ldev/kord/codegen/ksp/processor/generator/ProcessingContext;)V
+}
+
+public final class dev/kord/codegen/ksp/processor/generator/DataClassRepresentationKt {
+	public static final fun dataClassRepresentation (Ldev/kord/codegen/ksp/processor/generator/ProcessingContext;)V
+	public static final fun dataClassType (Lcom/google/devtools/ksp/symbol/KSPropertyDeclaration;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;)Lcom/squareup/kotlinpoet/TypeName;
+	public static final fun isMappedAnnotation (Lcom/google/devtools/ksp/symbol/KSType;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;)Z
+}
+
+public final class dev/kord/codegen/ksp/processor/generator/FactoryFunctionKt {
+	public static final fun factoryFunction (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;Ljava/lang/String;)V
+}
+
+public final class dev/kord/codegen/ksp/processor/generator/GeneratorKt {
+	public static final fun processAnnotation (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;)V
+}
+
+public final class dev/kord/codegen/ksp/processor/generator/ProcessingContext {
+	public fun <init> (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;Ljava/lang/String;)V
+	public final fun component1 ()Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;
+	public final fun component2 ()Lcom/squareup/kotlinpoet/FileSpec$Builder;
+	public final fun component3 ()Lcom/google/devtools/ksp/symbol/KSClassDeclaration;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;Ljava/lang/String;)Ldev/kord/codegen/ksp/processor/generator/ProcessingContext;
+	public static synthetic fun copy$default (Ldev/kord/codegen/ksp/processor/generator/ProcessingContext;Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/google/devtools/ksp/symbol/KSClassDeclaration;Ljava/lang/String;ILjava/lang/Object;)Ldev/kord/codegen/ksp/processor/generator/ProcessingContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeclaration ()Lcom/google/devtools/ksp/symbol/KSClassDeclaration;
+	public final fun getEnvironment ()Lcom/google/devtools/ksp/processing/SymbolProcessorEnvironment;
+	public final fun getFile ()Lcom/squareup/kotlinpoet/FileSpec$Builder;
+	public final fun getPackageName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

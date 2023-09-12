@@ -2,7 +2,6 @@
 
 import dev.kord.codegen.gradle.CodeGenerationExtension
 import dev.kord.codegen.gradle.DownloadSourceTask
-import gradle.kotlin.dsl.accessors._7b8cf35def19faa7a7cee07df6b87362.publishing
 import java.lang.Boolean as JBoolean
 
 plugins {

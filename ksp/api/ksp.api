@@ -1,0 +1,76 @@
+public final class dev/kord/codegen/ksp/CompanionObjectKt {
+	public static final fun getCompanionDeclaration (Lcom/google/devtools/ksp/symbol/KSClassDeclaration;)Lcom/google/devtools/ksp/symbol/KSClassDeclaration;
+}
+
+public final class dev/kord/codegen/ksp/TypeResolversKt {
+	public static final fun isClassifierReference (Lcom/google/devtools/ksp/symbol/KSReferenceElement;)Z
+	public static final fun isOfType (Lcom/google/devtools/ksp/symbol/KSAnnotation;Ljava/lang/String;)Z
+	public static final fun isOfType (Lcom/google/devtools/ksp/symbol/KSTypeReference;Ljava/lang/String;Z)Z
+	public static synthetic fun isOfType$default (Lcom/google/devtools/ksp/symbol/KSTypeReference;Ljava/lang/String;ZILjava/lang/Object;)Z
+}
+
+public final class dev/kord/codegen/ksp/annotations/AnnotationArguments {
+	public static final field Companion Ldev/kord/codegen/ksp/annotations/AnnotationArguments$Companion;
+	public synthetic fun <init> (Ljava/util/Map;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun get (Lkotlin/reflect/KProperty1;)Lcom/google/devtools/ksp/symbol/KSAnnotation;
+	public final fun getAnnotationArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getBoolean (Lkotlin/reflect/KProperty1;)Ljava/lang/Boolean;
+	public final fun getBooleanArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getKClass (Lkotlin/reflect/KProperty1;)Lcom/google/devtools/ksp/symbol/KSType;
+	public final fun getKClassArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getString (Lkotlin/reflect/KProperty1;)Ljava/lang/String;
+	public final fun getStringArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getValue (Lkotlin/reflect/KProperty1;)Ljava/lang/Object;
+	public final fun isDefault (Lkotlin/reflect/KProperty1;)Z
+}
+
+public final class dev/kord/codegen/ksp/annotations/AnnotationArguments$Companion {
+	public final fun arguments (Lcom/google/devtools/ksp/symbol/KSAnnotation;)Ldev/kord/codegen/ksp/annotations/AnnotationArguments;
+}
+
+public final class dev/kord/codegen/ksp/annotations/AnnotationArguments$NonNullAnnotationArguments {
+	public static final field Companion Ldev/kord/codegen/ksp/annotations/AnnotationArguments$NonNullAnnotationArguments$Companion;
+	public synthetic fun <init> (Ldev/kord/codegen/ksp/annotations/AnnotationArguments;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun get (Lkotlin/reflect/KProperty1;)Lcom/google/devtools/ksp/symbol/KSAnnotation;
+	public final fun getAnnotationArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getBoolean (Lkotlin/reflect/KProperty1;)Z
+	public final fun getBooleanArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getDelegate ()Ldev/kord/codegen/ksp/annotations/AnnotationArguments;
+	public final fun getKClass (Lkotlin/reflect/KProperty1;)Lcom/google/devtools/ksp/symbol/KSType;
+	public final fun getKClassArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun getString (Lkotlin/reflect/KProperty1;)Ljava/lang/String;
+	public final fun getStringArray (Lkotlin/reflect/KProperty1;)Ljava/util/List;
+	public final fun isDefault (Lkotlin/reflect/KProperty1;)Z
+}
+
+public final class dev/kord/codegen/ksp/annotations/AnnotationArguments$NonNullAnnotationArguments$Companion {
+	public final fun notNull (Ldev/kord/codegen/ksp/annotations/AnnotationArguments;)Ldev/kord/codegen/ksp/annotations/AnnotationArguments$NonNullAnnotationArguments;
+}
+
+public abstract interface annotation class dev/kord/codegen/ksp/annotations/NullIfDefault : java/lang/annotation/Annotation {
+}
+
+public abstract interface annotation class dev/kord/codegen/ksp/annotations/ProcessorAnnotation : java/lang/annotation/Annotation {
+	public abstract fun packageName ()Ljava/lang/String;
+}
+
+public final class dev/kord/codegen/ksp/processor/ProcessorAnnotation {
+	public static final field Companion Ldev/kord/codegen/ksp/processor/ProcessorAnnotation$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/kord/codegen/ksp/processor/ProcessorAnnotation;
+	public static synthetic fun copy$default (Ldev/kord/codegen/ksp/processor/ProcessorAnnotation;Ljava/lang/String;ILjava/lang/Object;)Ldev/kord/codegen/ksp/processor/ProcessorAnnotation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPackageName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/kord/codegen/ksp/processor/ProcessorAnnotation$Companion {
+	public final fun ProcessorAnnotation (Lcom/google/devtools/ksp/symbol/KSAnnotation;)Ldev/kord/codegen/ksp/processor/ProcessorAnnotation;
+}
+
+public final class dev/kord/codegen/ksp/processor/ProcessorAnnotationKt {
+	public static final fun getProcessorAnnotation (Lcom/google/devtools/ksp/symbol/KSAnnotated;)Ldev/kord/codegen/ksp/processor/ProcessorAnnotation;
+}
+

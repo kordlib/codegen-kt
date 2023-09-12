@@ -124,3 +124,4 @@ gradle-app.setting
 docs/api
 
 !kotlinpoet/build/generated/
+**/api/generationSource

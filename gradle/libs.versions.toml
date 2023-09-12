@@ -22,5 +22,7 @@ ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-grad
 dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "1.9.0" }
 maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
 
+binary-compatibility-validator-plugin = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version = "0.13.2" }
+
 [bundles]
-pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin"]
+pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin", "binary-compatibility-validator-plugin"]
