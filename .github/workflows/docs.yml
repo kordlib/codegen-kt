@@ -28,7 +28,7 @@ jobs:
       - name: Build Dokka
         uses: gradle/gradle-build-action@v2
         with:
-          args: dokkaHtmlMultiModule
+          arguments: dokkaHtmlMultiModule
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
       - name: Upload documentation

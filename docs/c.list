@@ -2,5 +2,5 @@
 <!DOCTYPE categories
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/categories.dtd">
 <categories>
-    <category id="wrs" name="codegen.kt documentation" order="1"/>
+    <category id="c" name="codegen.kt" order="1"/>
 </categories>
