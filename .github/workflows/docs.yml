@@ -29,6 +29,11 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: dokkaHtmlMultiModule
+      - name: Reorder file structure
+        run: |
+          shopt -s extglob
+          rm -rf !(build)
+          mv build/* .
       - name: Build Writerside docs using Docker
         uses: JetBrains/writerside-github-action@v3
         env:
