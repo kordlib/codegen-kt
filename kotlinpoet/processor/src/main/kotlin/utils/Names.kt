@@ -1,8 +1,9 @@
 @file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
-@file:OptIn(CodeGenInternal::class)
+@file:OptIn(CodeGenInternal::class, DelicateKotlinPoetApi::class)
 
 package dev.kord.codegen.generator.utils
 
+import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.asClassName
 import dev.kord.codegen.kotlinpoet.CodeGenDsl
 import dev.kord.codegen.kotlinpoet.CodeGenInternal

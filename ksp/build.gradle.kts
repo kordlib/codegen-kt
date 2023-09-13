@@ -32,10 +32,15 @@ testing {
     }
 }
 
-tasks {
+apiValidation {
+    ignoredProjects.add("annotations")
+    ignoredProjects.add("processor")
+}
+
+subprojects {
     afterEvaluate {
-        named("kspTestKotlin") {
-            dependsOn(jar)
+        mavenPublishing {
+            coordinates(group.toString(), "ksp-$name", version.toString())
         }
     }
 }

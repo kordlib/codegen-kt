@@ -1,7 +1,6 @@
 package dev.kord.codegen.generator.reification
 
 import com.google.devtools.ksp.containingFile
-import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.isConstructor
 import com.google.devtools.ksp.isPublic
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment

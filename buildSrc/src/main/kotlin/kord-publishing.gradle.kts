@@ -1,8 +1,11 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
+import com.vanniktech.maven.publish.KotlinMultiplatform
 import gradle.kotlin.dsl.accessors._8d1ef46afdac024fc616c6e49cc7c389.kotlin
 import org.intellij.lang.annotations.Language
 import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinMetadataTarget
+import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 
 plugins {
     org.jetbrains.dokka
@@ -57,39 +60,44 @@ mavenPublishing {
     }
 }
 
-// Since we only target JVM, we publish jvm artifacts only
-plugins.withId("org.jetbrains.kotlin.multiplatform") {
-    val dokkaJar by tasks.registering(Jar::class) {
-        from(tasks.named("dokkaHtml"))
-        archiveClassifier = "javadoc"
-    }
-
-
-    // We're kinda abusing the KMP target system here
-    // We make an extra jvm target for the kotlinpoet source to run ksp on it, however we don't want to publish
-    // that target, so we emulate the "jvm" target being a normal Kotlin/JVM project and publish it that way
-    afterEvaluate {
-        publishing.publications.create<MavenPublication>("maven") {
-            from(kotlin.targets.getByName("jvm").components.first())
-            artifact(dokkaJar)
+afterEvaluate {
+    plugins.withId("org.jetbrains.kotlin.multiplatform") {
+        if (kotlin.targets.any { it !is KotlinJvmTarget && it !is KotlinMetadataTarget }) {
+            mavenPublishing.configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaHtml")))
+            return@withId
         }
-    }
-
-    // Remove auto-generated KMP publications
-    tasks {
-        withType<PublishToMavenLocal> {
-            enabled = name == "publishMavenPublicationToMavenLocal"
+        val dokkaJar by tasks.registering(Jar::class) {
+            from(tasks.named("dokkaHtml"))
+            archiveClassifier = "javadoc"
         }
 
-        withType<PublishToMavenRepository> {
-            enabled = name == "publishMavenPublicationToMavenRepository"
-                || name == "publishMavenPublicationToMavenCentralRepository"
+
+        // We're kinda abusing the KMP target system here
+        // We make an extra jvm target for the kotlinpoet source to run ksp on it, however we don't want to publish
+        // that target, so we emulate the "jvm" target being a normal Kotlin/JVM project and publish it that way
+        afterEvaluate {
+            publishing.publications.create<MavenPublication>("maven") {
+                from(kotlin.targets.getByName("jvm").components.first())
+                artifact(dokkaJar)
+            }
         }
 
-        // Theoretically, this makes us loose information, however, that information is not relevant, since this is
-        // pretty much only a JVM lib targeting JVM 1.8 (so validation of that is unnecessary)
-        withType<GenerateModuleMetadata> {
-            enabled = false
+        // Remove auto-generated KMP publications
+        tasks {
+            withType<PublishToMavenLocal> {
+                enabled = name == "publishMavenPublicationToMavenLocal"
+            }
+
+            withType<PublishToMavenRepository> {
+                enabled = name == "publishMavenPublicationToMavenRepository"
+                    || name == "publishMavenPublicationToMavenCentralRepository"
+            }
+
+            // Theoretically, this makes us loose information, however, that information is not relevant, since this is
+            // pretty much only a JVM lib targeting JVM 1.8 (so validation of that is unnecessary)
+            withType<GenerateModuleMetadata> {
+                enabled = false
+            }
         }
     }
 }

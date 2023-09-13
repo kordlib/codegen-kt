@@ -20,10 +20,14 @@ kotlin {
     jvm()
 
     targets {
-        jvm("generationSource") {
-            mavenPublication {  }
+        jvm {
             attributes {
-                attribute(generationSourceAttribute, JBoolean(true))
+                attribute(generationSourceAttribute, false as java.lang.Boolean)
+            }
+        }
+        jvm("generationSource") {
+            attributes {
+                attribute(generationSourceAttribute, true as java.lang.Boolean)
             }
 
             compilations.all {
@@ -73,5 +77,5 @@ ksp {
 }
 
 dependencies {
-    "kspGenerationSource"(project(":code-processor"))
+    "kspGenerationSource"(project(":kotlinpoet:processor"))
 }

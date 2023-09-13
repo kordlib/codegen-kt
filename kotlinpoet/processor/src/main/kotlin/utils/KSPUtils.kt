@@ -4,11 +4,12 @@ import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ksp.TypeParameterResolver
-import com.squareup.kotlinpoet.ksp.toKModifier
 import com.squareup.kotlinpoet.ksp.toTypeName
-import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
 
-fun KSValueParameter.toParameterSpec(typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY, useParent: Boolean = false, noInline: Boolean = false) =
+fun KSValueParameter.toParameterSpec(
+    typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY,
+    useParent: Boolean = false
+) =
     ParameterSpec.builder(name!!.asString(), type.toTypeName(typeParamResolver), modifiers)
         .apply {
             if (name!!.asString() == "block") {

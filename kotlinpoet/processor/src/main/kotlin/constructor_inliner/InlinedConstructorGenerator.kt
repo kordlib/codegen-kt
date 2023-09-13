@@ -5,7 +5,6 @@ package dev.kord.codegen.generator.constructor_inliner
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
-import com.squareup.kotlinpoet.jvm.jvmWildcard
 import com.squareup.kotlinpoet.ksp.toClassName
 import dev.kord.codegen.generator.utils.*
 import dev.kord.codegen.generator.builder_functions.FactoryFunction

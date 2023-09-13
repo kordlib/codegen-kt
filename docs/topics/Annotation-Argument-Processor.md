@@ -8,6 +8,7 @@ to generate that boiler plate for you
 
 ```kotlin
 dependencies {
+    compileOnly("dev.kord.codegen", "ksp-annotations", "%version%")
     ksp("dev.kord.codegen", "ksp-processor", "%version%")
 }
 ```

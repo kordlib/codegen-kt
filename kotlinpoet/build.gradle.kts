@@ -8,8 +8,8 @@ plugins {
 dependencies {
     commonMainApi(libs.kotlinpoet)
     commonMainImplementation(kotlin("reflect"))
-    commonMainCompileOnly(projects.kspAnnotations)
-    kspCommonMainMetadata(projects.codeProcessor)
+    commonMainCompileOnly(projects.kotlinpoet.internalAnnotations)
+    kspCommonMainMetadata(projects.kotlinpoet.processor)
 
     commonTestImplementation(kotlin("test-junit5"))
 }
@@ -27,4 +27,9 @@ tasks {
     withType<KotlinJvmTest> {
         useJUnitPlatform()
     }
+}
+
+apiValidation {
+    ignoredProjects.add("internal-annotations")
+    ignoredProjects.add("processor")
 }

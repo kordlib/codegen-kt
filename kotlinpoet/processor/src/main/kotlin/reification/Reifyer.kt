@@ -1,7 +1,6 @@
 package dev.kord.codegen.generator.reification
 
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.Modifier.*
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.ksp.*
@@ -10,7 +9,6 @@ import dev.kord.codegen.generator.utils.toParameterSpec
 import dev.kord.codegen.generator.utils.toTypeParameterResolver
 import dev.kord.codegen.kotlinpoet.CodeBlock
 import dev.kord.codegen.kotlinpoet.FunSpec
-import java.lang.reflect.Modifier
 import kotlin.reflect.KClass
 
 val AS_CLASS_NAME = MemberName("com.squareup.kotlinpoet", "asClassName")
@@ -69,8 +67,7 @@ fun MaybeReifiableFunction.reify(): FunSpec {
             .map {
                 it.toParameterSpec(
                     typeVariableResolver,
-                    simpleName.asString().endsWith("Builder"),
-                    INLINE in this@reify.modifiers
+                    simpleName.asString().endsWith("Builder")
                 )
             }
             .toList()

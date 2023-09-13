@@ -3,14 +3,12 @@ package dev.kord.codegen.generator.visitors
 import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.packageName
 import dev.kord.codegen.generator.utils.FileSpec
-import dev.kord.codegen.generator.utils.addCallsInPlaceExactlyOnce
 import dev.kord.codegen.generator.utils.mapToValueParameterList
 import dev.kord.codegen.generator.utils.toParameterSpec
 import dev.kord.codegen.generator.builder_functions.getBuilderScopeName

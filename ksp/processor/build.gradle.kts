@@ -1,5 +1,10 @@
 plugins {
     org.jetbrains.kotlin.jvm
+    `kord-publishing`
+}
+
+base {
+    archivesName = "ksp-processor"
 }
 
 kotlin {
@@ -9,9 +14,9 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.codegen.kotlinpoet)
     implementation(libs.kotlinpoet.ksp)
     implementation(libs.ksp.api)
-    implementation(projects.kspAnnotations)
-    implementation(projects.ksp)
+    implementation(libs.codegen.kotlinpoet)
+    implementation(libs.codegen.ksp)
+    implementation(projects.ksp.annotations)
 }

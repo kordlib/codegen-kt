@@ -13,4 +13,16 @@ plugins {
 
 rootProject.name = "codegen-kt"
 
-include("code-processor", "kotlinpoet", "ksp", "ksp-processor", "ksp-annotations", "bom")
+include(
+    ":kotlinpoet:annotations",
+    ":kotlinpoet:processor",
+    ":kotlinpoet",
+    ":ksp:annotations",
+    ":ksp:processor",
+    ":ksp"
+)
+
+// For some reason not doing this makes Gradle interpret both "annotations" modules the same and causes circular
+// dependencies
+project(":kotlinpoet:annotations").name = "internal-annotations"
+

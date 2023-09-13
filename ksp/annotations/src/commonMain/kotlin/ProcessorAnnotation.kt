@@ -1,12 +1,8 @@
 package dev.kord.codegen.ksp.annotations
 
-import com.google.devtools.ksp.symbol.KSAnnotated
-import com.google.devtools.ksp.symbol.KSAnnotation
-
-
 /**
  * This annotation instructs the processor to generate a data class wrapper around the annotation with
- * factory functions to instantiate it from a [KSAnnotation].
+ * factory functions to instantiate it from a `KSAnnotation`.
  *
  * # Type mappings
  * KSP does not represent all types identical to the ones in the actual annotation, please use the mapping below
@@ -21,9 +17,9 @@ import com.google.devtools.ksp.symbol.KSAnnotation
  * # Factory function
  *
  * In order to obtain an instance of the wrapper type, please use the generated constructor function which takes an
- * [KSAnnotation]
+ * `KSAnnotation`
  *
- * # Obtaining the annotations from [KSAnnotated]
+ * # Obtaining the annotations from `KSAnnotated`
  *
  * If the Annotation is annotated with [Repeatable] use the generated KSAnnotated.getAnnotationNames function
  * otherwise use the generated KSAnnotated.getAnnotationName function

@@ -1,11 +1,9 @@
 package dev.kord.codegen.ksp
 
-import com.google.devtools.ksp.KspExperimental
 import com.google.devtools.ksp.findActualType
 import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.*
-import dev.kord.codegen.ksp.processor.getProcessorAnnotation
 
 /**
  * Get all symbols with specified annotation.
