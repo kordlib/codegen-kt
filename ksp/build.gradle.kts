@@ -37,6 +37,14 @@ apiValidation {
     ignoredProjects.add("processor")
 }
 
+tasks {
+    afterEvaluate {
+        named("kspTestKotlin") {
+            dependsOn(jar)
+        }
+    }
+}
+
 subprojects {
     afterEvaluate {
         mavenPublishing {

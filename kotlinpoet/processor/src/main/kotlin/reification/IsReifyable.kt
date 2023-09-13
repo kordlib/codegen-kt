@@ -1,10 +1,12 @@
 package dev.kord.codegen.generator.reification
 
 import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.google.devtools.ksp.symbol.KSClassifierReference
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.squareup.kotlinpoet.*
 import kotlin.reflect.KClass
 
+val ignoreList = listOf("addParameter", "addProperty")
 
 /**
  * Checks whether a [KSFunctionDeclaration] is reifiable.
@@ -18,6 +20,7 @@ fun KSFunctionDeclaration.isReifiable(
     includeClassName: Boolean = true,
     includeTypeName: Boolean = true
 ): Boolean {
+    if (simpleName.asString() in ignoreList && parentDeclaration is KSClassDeclaration) return false
     // We cannot add two receivers at this point
     if (parentDeclaration is KSClassDeclaration && extensionReceiver != null) return false
     return parameters.any {

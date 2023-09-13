@@ -45,4 +45,21 @@ private fun main() {
 class ExampleTest {
     @Test
     fun test() = main()
+
+    @Test
+    fun test2() {
+        fun generateListOf() = FunSpec("minOf") {
+            addAnnotation(Suppress("unused"))
+            val a = addParameter<Int>("a")
+            val b = addParameter<Int>("b")
+
+            returns<Boolean>()
+            addCode("return·")
+
+        }
+
+        println(generateListOf())
+    }
 }
+
+

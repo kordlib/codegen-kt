@@ -8,10 +8,17 @@ import com.google.devtools.ksp.processing.SymbolProcessorProvider
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSFile
+import com.squareup.kotlinpoet.KModifier
 import dev.kord.codegen.generator.builder_functions.BuilderVisitor
 import dev.kord.codegen.generator.reification.ReifyingVisitor
+import dev.kord.codegen.generator.reification.TypeVariableName
 import dev.kord.codegen.generator.utils.accept
 import dev.kord.codegen.generator.visitors.BeginEndVisitor
+import dev.kord.codegen.kotlinpoet.FunSpec
+import dev.kord.codegen.kotlinpoet.LambdaTypeName
+import dev.kord.codegen.kotlinpoet.addCode
+import dev.kord.codegen.kotlinpoet.addParameter
+import java.util.*
 
 val SymbolProcessorEnvironment.packageName: String
     get() = options["package-name"]!!

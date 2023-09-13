@@ -19,11 +19,11 @@ private val _arguments = listOf(
     mockDefaultValueArgument("withDefault")
 )
 
-private fun mockValueArgumentInternal(_name: String, _value: Any?, origin: Origin = Origin.KOTLIN) =
+private fun mockValueArgumentInternal(name: String, value: Any?, origin: Origin = Origin.KOTLIN) =
     mockk<KSValueArgument> {
-        every { name } returns MockKSName(_name)
+        every { this@mockk.name } returns MockKSName(name)
         every { this@mockk.origin } returns origin
-        every { value } returns _value
+        every { this@mockk.value } returns value
     }
 
 fun mockAnnotation() = mockk<KSAnnotation> {
