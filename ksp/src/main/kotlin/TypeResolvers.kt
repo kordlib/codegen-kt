@@ -1,7 +1,9 @@
 package dev.kord.codegen.ksp
 
+import com.google.devtools.ksp.KspExperimental
 import com.google.devtools.ksp.findActualType
 import com.google.devtools.ksp.getAnnotationsByType
+import com.google.devtools.ksp.isAnnotationPresent
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.*
 
@@ -51,7 +53,8 @@ public inline fun <reified T> KSTypeReference.isOfType(): Boolean = isOfType(T::
 /**
  * Checks whether an [KSAnnotation] is of type by it's [qualifiedName].
  */
-public fun KSAnnotation.isOfType(qualifiedName: String): Boolean = annotationType.isOfType(qualifiedName, canBeTypeAlias = false)
+public fun KSAnnotation.isOfType(qualifiedName: String): Boolean =
+    annotationType.isOfType(qualifiedName, canBeTypeAlias = false)
 
 /**
  * Checks whether an [KSTypeReference] is of type by it's [qualifiedName].
@@ -73,6 +76,12 @@ public fun KSTypeReference.isOfType(qualifiedName: String, canBeTypeAlias: Boole
     }
     return actualDeclaration.qualifiedName?.asString() == qualifiedName
 }
+
+/**
+ * Checks whether [A] is present on [KSAnnotated].
+ */
+@KspExperimental
+public inline fun <reified A : Annotation> KSAnnotated.isAnnotationPresent(): Boolean = isAnnotationPresent(A::class)
 
 /**
  * Fast check whether a [KSTypeReference] definitively does not match, this does not mean that it does it returning true

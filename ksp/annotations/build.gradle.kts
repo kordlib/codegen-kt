@@ -1,6 +1,7 @@
 plugins {
     org.jetbrains.kotlin.multiplatform
     `kord-publishing`
+    com.google.devtools.ksp
 }
 
 base {
@@ -26,4 +27,19 @@ kotlin {
 //    tvos()
 //    macosX64()
 //    macosArm64()
+
+    sourceSets {
+        named("jvmMain") {
+            kotlin.srcDirs("build/generated/ksp/jvm/jvmMain/kotlin")
+            dependencies {
+                compileOnly(libs.ksp.api)
+                compileOnly(libs.codegen.ksp)
+            }
+        }
+    }
+}
+
+dependencies {
+    "kspJvm"(libs.codegen.ksp.processor)
+
 }

@@ -1,5 +1,7 @@
 package dev.kord.codegen.ksp.annotations
 
+private const val packageName = "dev.kord.codegen.ksp.processor"
+
 /**
  * This annotation instructs the processor to generate a data class wrapper around the annotation with
  * factory functions to instantiate it from a `KSAnnotation`.
@@ -32,14 +34,38 @@ package dev.kord.codegen.ksp.annotations
 @MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.ANNOTATION_CLASS)
-@ProcessorAnnotation(packageName = "dev.kord.codegen.ksp.processor")
+@ProcessorAnnotation(packageName)
 public annotation class ProcessorAnnotation(
     val packageName: String
 )
 
 /**
- * Instructs the processor to use null, if [AnnotationArguments.isDefault] returns `true` for this property.
+ * Instructs the processor to use null, if `AnnotationArguments.isDefault` returns `true` for this property.
  */
+@MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.FIELD)
 public annotation class NullIfDefault
+
+/**
+ * Instructs the processor to use value of [name], if `AnnotationArguments.isDefault` returns `true` for this property.
+ *
+ * @property name the name of the property to use as a default
+ */
+@MustBeDocumented
+@Retention(AnnotationRetention.SOURCE)
+@Target(AnnotationTarget.FIELD)
+@ProcessorAnnotation(packageName)
+public annotation class OtherIfDefault(val name: String)
+
+/**
+ * Instructs the processor to validate that either of [names] are present.
+ *
+ * @property exclusive whether there should be only once exclusive value
+ */
+@MustBeDocumented
+@Retention(AnnotationRetention.SOURCE)
+@Target(AnnotationTarget.ANNOTATION_CLASS)
+@Repeatable
+@ProcessorAnnotation(packageName)
+public annotation class Either(val names: Array<String>, val exclusive: Boolean = false)

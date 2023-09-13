@@ -1,6 +1,8 @@
 package dev.kord.codegen.ksp.processor.generator
 
+import com.google.devtools.ksp.KspExperimental
 import com.google.devtools.ksp.getDeclaredProperties
+import com.google.devtools.ksp.isAnnotationPresent
 import com.google.devtools.ksp.symbol.*
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
@@ -8,8 +10,10 @@ import com.squareup.kotlinpoet.ksp.addOriginatingKSFile
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.toTypeName
 import dev.kord.codegen.kotlinpoet.*
-import dev.kord.codegen.ksp.processor.NULL_IF_DEFAULT
+import dev.kord.codegen.ksp.annotations.NullIfDefault
+import dev.kord.codegen.ksp.annotations.OtherIfDefault
 import dev.kord.codegen.ksp.processor.PROCESSOR_ANNOTATION
+import dev.kord.codegen.ksp.processor.getOtherIfDefault
 
 fun KSType.isMappedAnnotation(rootType: KSClassDeclaration): Boolean {
     val declaration = declaration
@@ -47,11 +51,16 @@ private fun KSTypeReference.dataClassType(rootType: KSClassDeclaration): TypeNam
     }
 }
 
+@OptIn(KspExperimental::class)
 fun KSPropertyDeclaration.dataClassType(rootType: KSClassDeclaration): TypeName {
     val notNullType = type.dataClassType(rootType)
 
-    return if (annotations.any { it.annotationType.resolve().declaration.qualifiedName!!.asString() == NULL_IF_DEFAULT }) {
+    return if (isAnnotationPresent(NullIfDefault::class)) {
         notNullType.copy(nullable = true)
+    } else if (isAnnotationPresent(OtherIfDefault::class)) {
+        val annotation = getOtherIfDefault()
+        val otherField = rootType.getDeclaredProperties().first { it.simpleName.asString() == annotation.name }
+        otherField.dataClassType(rootType)
     } else {
         notNullType
     }

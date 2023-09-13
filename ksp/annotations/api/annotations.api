@@ -1,6 +1,10 @@
 public abstract interface annotation class dev/kord/codegen/ksp/annotations/NullIfDefault : java/lang/annotation/Annotation {
 }
 
+public abstract interface annotation class dev/kord/codegen/ksp/annotations/OtherIfDefault : java/lang/annotation/Annotation {
+	public abstract fun name ()Ljava/lang/String;
+}
+
 public abstract interface annotation class dev/kord/codegen/ksp/annotations/ProcessorAnnotation : java/lang/annotation/Annotation {
 	public abstract fun packageName ()Ljava/lang/String;
 }
