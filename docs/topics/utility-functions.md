@@ -10,7 +10,7 @@ Returns an empty code block
 public fun emptyCodeBlock(): CodeBlock
 ```
 
-## indentWithSpaces
+## indentWithSpaces()
 
 Indents the file with the specified amount of spaces
 
@@ -18,7 +18,7 @@ Indents the file with the specified amount of spaces
 public fun FileSpec.Builder.indentWithSpaces(width: Int = 4)
 ```
 
-## withNameAllocator
+## withNameAllocator()
 
 Allows for usage of the name allocator like this
 
@@ -29,7 +29,7 @@ withNameAllocator {
 }
 ```
 
-## ClassName.parameterizedBy
+## ClassName.parameterizedBy()
 
 Allows parameterizing a ClassName by a generic type.
 
