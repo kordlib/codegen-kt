@@ -5,6 +5,7 @@ package dev.kord.codegen.kotlinpoet
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
@@ -24,4 +25,9 @@ public inline fun TypeSpec.Builder.addInitializerBlock(block: CodeBlockBuilderSc
     CodeBlock {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return CodeBlock(block).also(::addInitializerBlock)
+}
+
+public inline fun PropertySpec.Builder.`delegate`(block: CodeBlockBuilderScope = {}): CodeBlock {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return CodeBlock(block).also(::delegate)
 }
