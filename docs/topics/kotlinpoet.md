@@ -35,7 +35,7 @@ CodeBlock {
 
 However, these builder functions are not always called builder; for example, the TypeSpec builder has different types
 like `TypeSpec.classBuilder()` or `TypeSpec.interfaceBuilder()`. 
-In this DSL, these are top-level factory functions, with the name
+In this DSL, these become extensions of the corresponding spec class with the name
 of the builder type (the part of the function name before `Builder`).
 
 ```kotlin
