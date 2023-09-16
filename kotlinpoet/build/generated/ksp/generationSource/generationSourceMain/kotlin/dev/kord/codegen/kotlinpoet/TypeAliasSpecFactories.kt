@@ -1,12 +1,9 @@
-@file:OptIn(ExperimentalContracts::class)
-
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.TypeAliasSpec
 import com.squareup.kotlinpoet.TypeName
 import java.lang.reflect.Type
-import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 import kotlin.reflect.KClass

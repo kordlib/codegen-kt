@@ -14,6 +14,14 @@ dependencies {
     commonTestImplementation(kotlin("test-junit5"))
 }
 
+kotlin {
+    sourceSets {
+        all {
+            languageSettings.optIn("kotlin.contracts.ExperimentalContracts")
+        }
+    }
+}
+
 codeGeneration {
     fromVersionCatalog(libs.kotlinpoet)
     packageName = "dev.kord.codegen.kotlinpoet"

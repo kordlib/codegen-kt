@@ -1,15 +1,16 @@
 package dev.kord.codegen.generator.reification
 
 import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.google.devtools.ksp.symbol.Modifier
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
-import com.squareup.kotlinpoet.ksp.*
-import dev.kord.codegen.generator.utils.addAnnotationsFromFunction
-import dev.kord.codegen.generator.utils.toParameterSpec
-import dev.kord.codegen.generator.utils.toTypeParameterResolver
+import com.squareup.kotlinpoet.ksp.toClassName
+import com.squareup.kotlinpoet.ksp.toTypeName
+import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
+import com.squareup.kotlinpoet.ksp.toTypeVariableName
+import dev.kord.codegen.generator.utils.*
 import dev.kord.codegen.kotlinpoet.CodeBlock
 import dev.kord.codegen.kotlinpoet.FunSpec
-import com.google.devtools.ksp.symbol.Modifier
 import kotlin.reflect.KClass
 
 val AS_CLASS_NAME = MemberName("com.squareup.kotlinpoet", "asClassName")
@@ -104,6 +105,10 @@ fun MaybeReifiableFunction.reify(): FunSpec {
         }.joinToCode(", ")
 
         addAnnotationsFromFunction(this@reify)
+        val builderParameter = this@reify.parameters.firstOrNull { it.type.isCallableType() }
+        if (builderParameter != null) {
+            addCallsInPlaceExactlyOnce(ParameterSpec(builderParameter.name!!.asString(), NOTHING))
+        }
         addCode("return·%N(%L)", simpleName.asString(), valueParameters)
     }
 }

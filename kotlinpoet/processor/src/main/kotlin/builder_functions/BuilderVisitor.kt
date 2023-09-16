@@ -4,11 +4,15 @@ import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFile
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.UNIT
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.packageName
-import dev.kord.codegen.generator.utils.*
+import dev.kord.codegen.generator.utils.CODEGEN_DSL
+import dev.kord.codegen.generator.utils.FileSpec
+import dev.kord.codegen.generator.utils.RunOnceFunction
+import dev.kord.codegen.generator.utils.accept
 import dev.kord.codegen.generator.visitors.VisitorBase
 import dev.kord.codegen.kotlinpoet.AnnotationSpec
 import dev.kord.codegen.kotlinpoet.LambdaTypeName
@@ -48,7 +52,6 @@ object BuilderVisitor : VisitorBase() {
             .flatten()
 
         val addBuilder = RunOnceFunction<FileSpec.Builder, String> { file, builderName ->
-            file.optInForContracts()
             val alias = LambdaTypeName(
                 classDeclaration.toClassName().nestedClass("Builder"),
                 returnType = UNIT

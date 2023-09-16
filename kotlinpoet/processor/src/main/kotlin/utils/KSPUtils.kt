@@ -13,7 +13,7 @@ fun KSValueParameter.toParameterSpec(
 ) =
     ParameterSpec.builder(name!!.asString(), type.toTypeName(typeParamResolver), modifiers)
         .apply {
-            if (name!!.asString() == "block" && noInline) {
+            if (type.isCallableType() && noInline) {
                 addModifiers(KModifier.NOINLINE)
             }
             if (hasDefault) {

@@ -1,10 +1,7 @@
-@file:OptIn(ExperimentalContracts::class)
-
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.MemberName
-import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 

@@ -21,12 +21,3 @@ private val EXACTLY_ONCE = ClassName("kotlin.contracts", "InvocationKind").membe
 fun FunSpec.Builder.addCallsInPlaceExactlyOnce(builderProperty: ParameterSpec) {
     addStatement("%M·{·callsInPlace(%N,·%M)·}", CONTRACT, builderProperty, EXACTLY_ONCE)
 }
-
-/**
- * Adds the required opt-in for [ExperimentalContracts].
- */
-fun Annotatable.Builder<*>.optInForContracts() {
-    addAnnotation(OPT_IN) {
-        addMember("%T::class", ClassName("kotlin.contracts", "ExperimentalContracts"))
-    }
-}

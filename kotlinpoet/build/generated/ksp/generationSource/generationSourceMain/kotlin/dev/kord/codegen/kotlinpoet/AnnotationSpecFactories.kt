@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalContracts::class)
-
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.AnnotationSpec
@@ -8,7 +6,6 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.ParameterizedTypeName
 import javax.lang.model.element.AnnotationMirror
-import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 import kotlin.reflect.KClass

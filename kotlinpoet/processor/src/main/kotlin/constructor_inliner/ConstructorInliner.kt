@@ -12,7 +12,6 @@ import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.builder_functions.BuilderFunctionCollector
 import dev.kord.codegen.generator.packageName
 import dev.kord.codegen.generator.utils.accept
-import dev.kord.codegen.generator.utils.optInForContracts
 
 fun SymbolProcessorEnvironment.processInlineConstructors(
     resolver: Resolver,
@@ -21,7 +20,6 @@ fun SymbolProcessorEnvironment.processInlineConstructors(
 ) {
     val spec = FileSpec.builder(packageName, file.fileName.dropLast(3)).apply {
         addKotlinDefaultImports(includeJvm = true, includeJs = false)
-        optInForContracts()
 
         constructors.forEach { constructor ->
             val builderClass =
