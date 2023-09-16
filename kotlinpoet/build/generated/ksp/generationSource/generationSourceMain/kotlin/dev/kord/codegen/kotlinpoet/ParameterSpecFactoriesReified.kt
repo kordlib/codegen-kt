@@ -9,11 +9,11 @@ import kotlin.collections.Iterable
 public inline fun <reified T> ParameterSpec(
   name: String,
   vararg modifiers: KModifier,
-  noinline block: ParameterSpecBuilderScope = {},
+  block: ParameterSpecBuilderScope = {},
 ): ParameterSpec = ParameterSpec(name, typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> ParameterSpec(
   name: String,
   modifiers: Iterable<KModifier>,
-  noinline block: ParameterSpecBuilderScope = {},
+  block: ParameterSpecBuilderScope = {},
 ): ParameterSpec = ParameterSpec(name, typeNameOf<T>(), modifiers, block)

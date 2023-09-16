@@ -12,7 +12,7 @@ import kotlin.collections.Iterable
 public inline fun <reified T> TypeSpec.Builder.addProperty(
   name: String,
   vararg modifiers: KModifier,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = addProperty(name, typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> TypeSpec.Builder.addProperty(vararg modifiers: KModifier, noinline
@@ -22,7 +22,7 @@ public inline fun <reified T> TypeSpec.Builder.addProperty(vararg modifiers: KMo
 public inline fun <reified T> TypeSpec.Builder.addProperty(
   name: String,
   modifiers: Iterable<KModifier>,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = addProperty(name, typeNameOf<T>(), modifiers, block)
 
 public inline fun <reified T> TypeSpec.Builder.addProperty(modifiers: Iterable<KModifier>, noinline
@@ -32,7 +32,7 @@ public inline fun <reified T> TypeSpec.Builder.addProperty(modifiers: Iterable<K
 public inline fun <reified T> FileSpec.Builder.addProperty(
   name: String,
   vararg modifiers: KModifier,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = addProperty(name, typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> FileSpec.Builder.addProperty(vararg modifiers: KModifier, noinline
@@ -42,7 +42,7 @@ public inline fun <reified T> FileSpec.Builder.addProperty(vararg modifiers: KMo
 public inline fun <reified T> FileSpec.Builder.addProperty(
   name: String,
   modifiers: Iterable<KModifier>,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = addProperty(name, typeNameOf<T>(), modifiers, block)
 
 public inline fun <reified T> FileSpec.Builder.addProperty(modifiers: Iterable<KModifier>, noinline

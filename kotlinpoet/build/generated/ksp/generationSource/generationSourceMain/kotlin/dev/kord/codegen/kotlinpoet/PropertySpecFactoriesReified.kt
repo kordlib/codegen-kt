@@ -9,11 +9,11 @@ import kotlin.collections.Iterable
 public inline fun <reified T> PropertySpec(
   name: String,
   vararg modifiers: KModifier,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = PropertySpec(name, typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> PropertySpec(
   name: String,
   modifiers: Iterable<KModifier>,
-  noinline block: PropertySpecBuilderScope = {},
+  block: PropertySpecBuilderScope = {},
 ): PropertySpec = PropertySpec(name, typeNameOf<T>(), modifiers, block)

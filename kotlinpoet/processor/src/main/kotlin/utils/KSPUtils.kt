@@ -8,11 +8,12 @@ import com.squareup.kotlinpoet.ksp.toTypeName
 
 fun KSValueParameter.toParameterSpec(
     typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY,
-    useParent: Boolean = false
+    useParent: Boolean = false,
+    noInline: Boolean = false
 ) =
     ParameterSpec.builder(name!!.asString(), type.toTypeName(typeParamResolver), modifiers)
         .apply {
-            if (name!!.asString() == "block") {
+            if (name!!.asString() == "block" && noInline) {
                 addModifiers(KModifier.NOINLINE)
             }
             if (hasDefault) {

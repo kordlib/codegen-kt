@@ -11,7 +11,7 @@ import kotlin.collections.Iterable
 public inline fun <reified T> FunSpec.Builder.addParameter(
   name: String,
   vararg modifiers: KModifier,
-  noinline block: ParameterSpecBuilderScope = {},
+  block: ParameterSpecBuilderScope = {},
 ): ParameterSpec = addParameter(name, typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> FunSpec.Builder.addParameter(vararg modifiers: KModifier, noinline
@@ -21,7 +21,7 @@ public inline fun <reified T> FunSpec.Builder.addParameter(vararg modifiers: KMo
 public inline fun <reified T> FunSpec.Builder.addParameter(
   name: String,
   modifiers: Iterable<KModifier>,
-  noinline block: ParameterSpecBuilderScope = {},
+  block: ParameterSpecBuilderScope = {},
 ): ParameterSpec = addParameter(name, typeNameOf<T>(), modifiers, block)
 
 public inline fun <reified T> FunSpec.Builder.addParameter(modifiers: Iterable<KModifier>, noinline
