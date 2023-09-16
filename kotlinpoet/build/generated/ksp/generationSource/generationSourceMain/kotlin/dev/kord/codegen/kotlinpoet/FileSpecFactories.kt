@@ -29,7 +29,7 @@ public inline fun FileSpec(
     return FileSpec.builder(packageName, fileName).apply(block).build()
 }
 
-public inline fun script(
+public inline fun FileSpec.Companion.script(
     fileName: String,
     packageName: String = "",
     block: FileSpecBuilderScope = {},

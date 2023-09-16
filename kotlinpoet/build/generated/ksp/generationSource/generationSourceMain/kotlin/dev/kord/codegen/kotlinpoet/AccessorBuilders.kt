@@ -10,10 +10,10 @@ import kotlin.contracts.contract
 
 public inline fun PropertySpec.Builder.getter(block: FunSpecBuilderScope = {}): FunSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
-  return dev.kord.codegen.kotlinpoet.getter(block).also(::getter)
+  return FunSpec.getter(block).also(::getter)
 }
 
 public inline fun PropertySpec.Builder.setter(block: FunSpecBuilderScope = {}): FunSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
-  return dev.kord.codegen.kotlinpoet.setter(block).also(::setter)
+  return FunSpec.setter(block).also(::setter)
 }

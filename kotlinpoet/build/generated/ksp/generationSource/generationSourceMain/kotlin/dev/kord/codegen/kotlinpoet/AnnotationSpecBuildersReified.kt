@@ -1,4 +1,4 @@
- package dev.kord.codegen.kotlinpoet
+package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.Annotatable
 import com.squareup.kotlinpoet.AnnotationSpec

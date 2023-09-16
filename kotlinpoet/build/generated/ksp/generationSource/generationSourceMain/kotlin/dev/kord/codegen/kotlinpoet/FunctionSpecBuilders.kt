@@ -24,7 +24,7 @@ public inline fun TypeSpec.Builder.addFunction(memberName: MemberName, block: Fu
 
 public inline fun TypeSpec.Builder.addConstructor(block: FunSpecBuilderScope = {}): FunSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
-  return `constructor`(block).also(::addFunction)
+  return FunSpec.`constructor`(block).also(::addFunction)
 }
 
 public inline fun FileSpec.Builder.addFunction(name: String, block: FunSpecBuilderScope = {}):

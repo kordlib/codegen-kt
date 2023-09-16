@@ -20,17 +20,17 @@ public inline fun FunSpec(memberName: MemberName, block: FunSpecBuilderScope = {
     return FunSpec.builder(memberName).apply(block).build()
 }
 
-public inline fun `constructor`(block: FunSpecBuilderScope = {}): FunSpec {
+public inline fun FunSpec.Companion.`constructor`(block: FunSpecBuilderScope = {}): FunSpec {
     contract { callsInPlace(block, EXACTLY_ONCE) }
     return FunSpec.constructorBuilder().apply(block).build()
 }
 
-public inline fun getter(block: FunSpecBuilderScope = {}): FunSpec {
+public inline fun FunSpec.Companion.getter(block: FunSpecBuilderScope = {}): FunSpec {
     contract { callsInPlace(block, EXACTLY_ONCE) }
     return FunSpec.getterBuilder().apply(block).build()
 }
 
-public inline fun setter(block: FunSpecBuilderScope = {}): FunSpec {
+public inline fun FunSpec.Companion.setter(block: FunSpecBuilderScope = {}): FunSpec {
     contract { callsInPlace(block, EXACTLY_ONCE) }
     return FunSpec.setterBuilder().apply(block).build()
 }

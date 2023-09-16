@@ -39,6 +39,9 @@ fun FactoryFunction.generateNoBuilderFactoryFunction(): FunSpec {
  */
 fun FactoryFunction.generateBuilderFactoryFunction(environment: SymbolProcessorEnvironment): FunSpec {
     return generateFactoryFunction {
+        if (specialName != null) {
+            receiver(specType.toClassName().nestedClass("Companion"))
+        }
         addModifiers(KModifier.INLINE)
 
         val builderParameter = getBuilderParameter(environment.packageName)

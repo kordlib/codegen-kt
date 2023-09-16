@@ -4,6 +4,7 @@ package dev.kord.codegen.generator.constructor_inliner
 
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.MemberName.Companion.member
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.ksp.toClassName
 import dev.kord.codegen.generator.utils.*
@@ -40,9 +41,7 @@ fun FactoryFunction.generateInlinedConstructorWithNameParameter(
     returns(specType.toClassName())
     addCode(
         "return·%L(%L).also(::%L)",
-        builderFunctionName.takeIf { !constructor.useQualifiedName }
-            ?.escapeIfNecessary()
-            ?: "$packageName.$builderFunctionName",
+        builderFunctionName(),
         getValueParametersList(packageName),
         constructor.functionName
     )
@@ -77,9 +76,7 @@ fun FactoryFunction.generateInlinedConstructorWithNameDelegate(
         withControlFlow("return·%M { %L ->", PRODUCE_BY_NAME, constructor.nameProperty) {
             addStatement(
                 "%L(%L).also(::%L)",
-                builderFunctionName.takeIf { !constructor.useQualifiedName }
-                    ?.escapeIfNecessary()
-                    ?: "$packageName.$builderFunctionName",
+                builderFunctionName(),
                 valueParameterList,
                 constructor.functionName,
             )
@@ -87,6 +84,15 @@ fun FactoryFunction.generateInlinedConstructorWithNameDelegate(
     }
 
     addCode(code)
+}
+
+private fun FactoryFunction.builderFunctionName(): CodeBlock {
+    val builderFunction = if (specialName != null) {
+        CodeBlock.of("%T.%N", specType.toClassName(), specType.toClassName().member(builderFunctionName))
+    } else {
+        CodeBlock.of("%L", builderFunctionName)
+    }
+    return builderFunction
 }
 
 private fun FactoryFunction.generateInlinedConstructor(
