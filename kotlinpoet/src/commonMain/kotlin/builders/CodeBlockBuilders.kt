@@ -13,6 +13,11 @@
     functionName = "addCode"
 )
 
+@file:InlineConstructor(
+    forClass = TypeSpec.Builder::class,
+    functionName = "addInitializerBlock"
+)
+
 package dev.kord.codegen.kotlinpoet.builders
 
 import com.squareup.kotlinpoet.FileSpec
