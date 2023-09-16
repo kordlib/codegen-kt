@@ -14,7 +14,6 @@ import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
 import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.packageName
 import dev.kord.codegen.generator.utils.getDeclaredFunctions
-import dev.kord.codegen.generator.utils.isCallableType
 import dev.kord.codegen.generator.visitors.VisitorBase
 
 /**
@@ -69,7 +68,7 @@ object ReifyingVisitor : VisitorBase() {
                 .flatMap(KSDeclarationContainer::getDeclaredFunctions))
                 .filter { it.isReifiable() && !it.isConstructor() && it.isPublic() }
                 .process()
-                .onEach {
+                .forEach {
                     addFunction(it.reify())
                 }
         }.build()
