@@ -49,9 +49,7 @@ public annotation class InlineConstructor(
     val ignoreBuilders: Array<String> = [],
     val useQualifiedName: Boolean = false,
     @NullIfDefault
-    val nameProperty: String = NO_DELEGATION,
-    @NullIfDefault
-    val nameProperty2: String = NO_DELEGATION
+    val nameProperty: String = NO_DELEGATION
 ) {
 
     /**
