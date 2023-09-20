@@ -36,21 +36,3 @@ public fun FileSpec.Builder.indentWithSpaces(width: Int = 4): FileSpec.Builder =
  * ```
  */
 public fun withNameAllocator(block: NamingScope): Unit = NameAllocator().block()
-
-public fun minOf(a: ULong, b: ULong): ULong {
-    return if (a <= b) a else b
-}
-
-@HidesMembers
-public fun FunSpec.Builder.addParameter(parameterSpec: ParameterSpec): FunSpec.Builder = apply {
-
-}
-
-//private fun generateListOf() = FunSpec("minOf") {
-//    addAnn(Suppress("unused"))
-//    val a by addParameter<Int>()
-//    val b by addParameter<Int>()
-//
-//    returns<Boolean>()
-//    addCode("return·if·(%N·<=·%n)·a·else·b", a, b)
-//}
