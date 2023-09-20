@@ -73,6 +73,12 @@ public class AnnotationArguments<A : Annotation> private constructor(
     public operator fun get(parameter: KProperty1<A, KClass<*>>): KSType? =
         parameter.value as KSType?
 
+    @JvmName("getEnum")
+    public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, T>): T? =
+        (parameter.value as KSType?)?.let {
+            enumValueOf<T>(it.declaration.simpleName.asString())
+        }
+
     /**
      * Returns the value of [parameter] as a [List] of [Numbers][Number] or `null` if it is the default value
      * (see [NonNullAnnotationArguments] for more information).
@@ -104,6 +110,13 @@ public class AnnotationArguments<A : Annotation> private constructor(
     @JvmName("getBooleanArray")
     public operator fun get(parameter: KProperty1<A, Array<out Boolean>>): List<Boolean>? =
         @Suppress("UNCHECKED_CAST") (parameter.value as List<Boolean>?)
+
+
+    @JvmName("getEnumArray")
+    public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, Array<out T>>): List<T>? =
+        @Suppress("UNCHECKED_CAST") (parameter.value as List<KSType>?)?.map {
+            enumValueOf<T>(it.declaration.simpleName.asString())
+        }
 
     /**
      * Not null accessors for [AnnotationArguments].
@@ -157,6 +170,9 @@ public class AnnotationArguments<A : Annotation> private constructor(
         public operator fun get(parameter: KProperty1<A, KClass<*>>): KSType =
             delegate[parameter]!!
 
+        @JvmName("getEnum")
+        public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, T>): T = delegate[parameter]!!
+
         /**
          * Returns the value of [parameter] as a [List] [Numbers][Number].
          */
@@ -182,6 +198,10 @@ public class AnnotationArguments<A : Annotation> private constructor(
          */
         @JvmName("getBooleanArray")
         public operator fun get(parameter: KProperty1<A, Array<out Boolean>>): List<Boolean> =
+            delegate[parameter]!!
+
+        @JvmName("getEnumArray")
+        public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, Array<out T>>): List<T>? =
             delegate[parameter]!!
 
         public companion object {
