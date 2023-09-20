@@ -339,11 +339,9 @@ public final class dev/kord/codegen/kotlinpoet/TypeSpecFactoriesKt {
 }
 
 public final class dev/kord/codegen/kotlinpoet/UtilsKt {
-	public static final fun addParameter (Lcom/squareup/kotlinpoet/FunSpec$Builder;Lcom/squareup/kotlinpoet/ParameterSpec;)Lcom/squareup/kotlinpoet/FunSpec$Builder;
 	public static final fun emptyCodeBlock ()Lcom/squareup/kotlinpoet/CodeBlock;
 	public static final fun indentWithSpaces (Lcom/squareup/kotlinpoet/FileSpec$Builder;I)Lcom/squareup/kotlinpoet/FileSpec$Builder;
 	public static synthetic fun indentWithSpaces$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;IILjava/lang/Object;)Lcom/squareup/kotlinpoet/FileSpec$Builder;
-	public static final fun minOf-PWzV0Is (JJ)J
 	public static final fun withNameAllocator (Lkotlin/jvm/functions/Function1;)V
 }
 
@@ -365,5 +363,18 @@ public final class dev/kord/codegen/kotlinpoet/delegate/SubSpecDelegateKt {
 
 public final class dev/kord/codegen/kotlinpoet/delegate/SubSpecDelegateProvider {
 	public final fun provideDelegate (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Lkotlin/properties/ReadOnlyProperty;
+}
+
+public final class dev/kord/codegen/kotlinpoet/js/JsAnnotationsKt {
+	public static final fun ignore (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
+	public static final fun ignore (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
+	public static final fun ignore (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
+	public static final fun jsExport (Lcom/squareup/kotlinpoet/FileSpec$Builder;)V
+	public static final fun jsExport (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
+	public static final fun jsExport (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
+	public static final fun jsExport (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
+	public static final fun jsName (Lcom/squareup/kotlinpoet/FunSpec$Builder;Ljava/lang/String;)V
+	public static final fun jsName (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Ljava/lang/String;)V
+	public static final fun jsName (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;)V
 }
 
