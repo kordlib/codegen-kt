@@ -1,6 +1,7 @@
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.CodeBlock
+import com.squareup.kotlinpoet.Documentable
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.PropertySpec
@@ -27,4 +28,9 @@ public inline fun TypeSpec.Builder.addInitializerBlock(block: CodeBlockBuilderSc
 public inline fun PropertySpec.Builder.`delegate`(block: CodeBlockBuilderScope = {}): CodeBlock {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return CodeBlock(block).also(::delegate)
+}
+
+public inline fun Documentable.Builder<*>.addKdoc(block: CodeBlockBuilderScope = {}): CodeBlock {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return CodeBlock(block).also(::addKdoc)
 }

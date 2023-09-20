@@ -23,10 +23,12 @@
     functionName = "delegate"
 )
 
+@file:InlineConstructor(
+    forClass = Documentable.Builder::class,
+    functionName = "addKdoc"
+)
+
 package dev.kord.codegen.kotlinpoet.builders
 
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.PropertySpec
-import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.*
 import dev.kord.codegen.ksp.annotations.InlineConstructor
