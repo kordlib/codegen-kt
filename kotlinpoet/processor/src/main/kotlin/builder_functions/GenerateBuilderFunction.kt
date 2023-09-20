@@ -14,6 +14,7 @@ import dev.kord.codegen.generator.utils.addAnnotationsFromFunction
 import dev.kord.codegen.generator.utils.addCallsInPlaceExactlyOnce
 import dev.kord.codegen.generator.utils.mapToValueParameterList
 import dev.kord.codegen.generator.utils.toParameterSpec
+import dev.kord.codegen.kotlinpoet.FunSpec
 
 /**
  * ```kotlin
@@ -64,12 +65,12 @@ fun FactoryFunction.generateBuilderFactoryFunction(environment: SymbolProcessorE
 }
 
 private fun FactoryFunction.generateFactoryFunction(additional: FunSpec.Builder.() -> Unit): FunSpec {
-    return FunSpec.builder(builderFunctionName).apply {
+    return FunSpec(builderFunctionName) {
         addOriginatingKSFile(specType.containingFile!!)
         returns(specType.toClassName())
         addModifiers(this@generateFactoryFunction.modifiers.mapNotNull(Modifier::toKModifier))
         addParameters(this@generateFactoryFunction.parameters.map(KSValueParameter::toParameterSpec))
         addAnnotationsFromFunction(this@generateFactoryFunction)
         additional()
-    }.build()
+    }
 }
