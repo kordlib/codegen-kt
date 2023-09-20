@@ -16,11 +16,11 @@ import com.squareup.kotlinpoet.ksp.writeTo
 import dev.kord.codegen.generator.utils.ADD_ANNOTATION
 import dev.kord.codegen.generator.utils.mapToValueParameterList
 import dev.kord.codegen.kotlinpoet.CodeBlock
-import dev.kord.codegen.kotlinpoet.FileSpec
 import dev.kord.codegen.kotlinpoet.addFunction
 import dev.kord.codegen.kotlinpoet.withControlFlow
 import dev.kord.codegen.ksp.annotations.AnnotationArguments.Companion.arguments
 import dev.kord.codegen.ksp.getAnnotationByType
+import dev.kord.codegen.generator.utils.FileSpec
 
 @OptIn(KspExperimental::class)
 fun SymbolProcessorEnvironment.processAnnotators(resolver: Resolver, origin: KSFile, annotators: Sequence<Annotator>) {
@@ -31,9 +31,6 @@ fun SymbolProcessorEnvironment.processAnnotators(resolver: Resolver, origin: KSF
                 .filter { it.classKind == ClassKind.ANNOTATION_CLASS }
                 .filter { it.simpleName.asString() !in annotator.ignore }
                 .forEach {
-                    val targetAnnotation = it.getAnnotationByType<Target>()
-                    val targetsRaw = targetAnnotation.arguments<Target>()
-                    val targets = targetsRaw[Target::allowedTargets]!!
                     it.generateAnnotator(origin, this)
                 }
         }
