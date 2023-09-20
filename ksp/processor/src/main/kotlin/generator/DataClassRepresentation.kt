@@ -19,7 +19,7 @@ fun KSType.isMappedAnnotation(rootType: KSClassDeclaration): Boolean {
     val declaration = declaration
     return if (declaration is KSClassDeclaration && declaration.classKind == ClassKind.ANNOTATION_CLASS) {
         declaration.parentDeclaration == rootType
-            || declaration.annotations
+                || declaration.annotations
             .any { it.annotationType.resolve().declaration.qualifiedName!!.asString() == PROCESSOR_ANNOTATION }
     } else {
         false
@@ -39,7 +39,9 @@ private fun KSTypeReference.dataClassType(rootType: KSClassDeclaration): TypeNam
         else -> {
             val declaration = resolvedType.declaration
             if (declaration is KSClassDeclaration && declaration.classKind == ClassKind.ANNOTATION_CLASS) {
-                if (resolvedType.isMappedAnnotation(rootType)) {
+                if (resolvedType.isMappedAnnotation(rootType)
+                    || (resolvedType.declaration as? KSClassDeclaration)?.classKind == ClassKind.ENUM_CLASS
+                    ) {
                     ClassName("", declaration.simpleName.asString())
                 } else {
                     KSAnnotation::class.asClassName()

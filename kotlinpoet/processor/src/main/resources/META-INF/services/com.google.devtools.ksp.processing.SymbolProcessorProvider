@@ -1,2 +1,3 @@
 dev.kord.codegen.generator.CodeProcessor$Provider
 dev.kord.codegen.generator.ConstructorInliner$Provider
+dev.kord.codegen.generator.AnnotatorProcessor$Provider
