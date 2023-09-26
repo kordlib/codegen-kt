@@ -57,6 +57,11 @@ public abstract interface annotation class dev/kord/codegen/kotlinpoet/CodeGenDs
 public abstract interface annotation class dev/kord/codegen/kotlinpoet/CodeGenInternal : java/lang/annotation/Annotation {
 }
 
+public final class dev/kord/codegen/kotlinpoet/EnumConstantHelperKt {
+	public static final fun addEnumConstant (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec$Builder;
+	public static synthetic fun addEnumConstant$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec$Builder;
+}
+
 public final class dev/kord/codegen/kotlinpoet/FileSpecFactoriesKt {
 	public static final fun FileSpec (Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static final fun FileSpec (Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeSpec;)Lcom/squareup/kotlinpoet/FileSpec;
@@ -237,10 +242,6 @@ public final class dev/kord/codegen/kotlinpoet/TypeSpecBuildersKt {
 	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addAnonymousClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addAnonymousClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnonymousClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnonymousClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static final fun addClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static final fun addClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static final fun addClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;

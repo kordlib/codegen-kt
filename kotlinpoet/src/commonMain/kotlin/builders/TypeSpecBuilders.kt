@@ -4,7 +4,7 @@
     nameMapping = [
         InlineConstructor.NameMapping("Annotation", "AnnotationClass")
     ],
-    ignoreBuilders = ["anonymousClass"]
+    ignoreBuilders = ["anonymousClassBuilder"]
 )
 
 @file:InlineConstructor(
@@ -13,7 +13,7 @@
     nameMapping = [
         InlineConstructor.NameMapping("Annotation", "AnnotationClass")
     ],
-    ignoreBuilders = ["anonymousClass"]
+    ignoreBuilders = ["anonymousClassBuilder"]
 )
 
 @file:InlineConstructor(

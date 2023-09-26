@@ -91,11 +91,6 @@ public inline fun TypeSpec.Builder.addEnum(className: ClassName, block: TypeSpec
   return TypeSpec.`enum`(className, block).also(::addType)
 }
 
-public inline fun TypeSpec.Builder.addAnonymousClass(block: TypeSpecBuilderScope = {}): TypeSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return TypeSpec.anonymousClass(block).also(::addType)
-}
-
 public inline fun TypeSpec.Builder.addAnnotationClass(name: String, block: TypeSpecBuilderScope =
     {}): TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
@@ -190,11 +185,6 @@ public inline fun FileSpec.Builder.addEnum(className: ClassName, block: TypeSpec
     TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return TypeSpec.`enum`(className, block).also(::addType)
-}
-
-public inline fun FileSpec.Builder.addAnonymousClass(block: TypeSpecBuilderScope = {}): TypeSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return TypeSpec.anonymousClass(block).also(::addType)
 }
 
 public inline fun FileSpec.Builder.addAnnotationClass(name: String, block: TypeSpecBuilderScope =

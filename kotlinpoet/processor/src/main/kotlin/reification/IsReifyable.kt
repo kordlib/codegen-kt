@@ -1,7 +1,6 @@
 package dev.kord.codegen.generator.reification
 
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSClassifierReference
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.squareup.kotlinpoet.*
 import kotlin.reflect.KClass
@@ -24,7 +23,7 @@ fun KSFunctionDeclaration.isReifiable(
     // We cannot add two receivers at this point
     if (parentDeclaration is KSClassDeclaration && extensionReceiver != null) return false
     return parameters.any {
-        val name = it.type.resolve().declaration.qualifiedName!!.asString()
+        val name = it.type.resolve().declaration.qualifiedName?.asString() ?: return@any false
 
         !it.isVararg && (name == KClass::class.qualifiedName && includeKClass
             || (name == ClassName::class.qualifiedName && includeClassName)
