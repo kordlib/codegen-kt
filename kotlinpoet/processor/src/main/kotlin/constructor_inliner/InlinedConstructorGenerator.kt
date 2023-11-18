@@ -1,5 +1,3 @@
-@file:Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
-
 package dev.kord.codegen.generator.constructor_inliner
 
 import com.google.devtools.ksp.symbol.KSValueParameter

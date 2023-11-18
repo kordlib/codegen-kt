@@ -5,7 +5,7 @@ import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.squareup.kotlinpoet.*
 import kotlin.reflect.KClass
 
-val ignoreList = listOf("addParameter", "addProperty")
+val ignoreList = listOf("addParameter", "addProperty", "builder")
 
 /**
  * Checks whether a [KSFunctionDeclaration] is reifiable.

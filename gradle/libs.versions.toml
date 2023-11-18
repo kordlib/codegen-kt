@@ -1,25 +1,25 @@
 [versions]
-kotlin = "1.9.10"
-kotlinpoet = "1.14.2"
-ksp = "1.9.10-1.0.13"
+kotlin = "2.0.0-Beta1"
+kotlinpoet = "1.15.0"
+ksp = "2.0.0-Beta1-1.0.14"
 
 # The compiled binary of codegen.kt we use to compile codegen.kt itself
 codegen-kt = "main-SNAPSHOT"
 
 [libraries]
 ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
-kotlinpoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet = { group = "com.squareup", name = "kotlinpoet-jvm", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
 
 codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version = "main-20230912.212936-5" }
 codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-20230912.211940-5" }
 codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-20230912.211940-7" }
 
-mockk = { group = "io.mockk", name = "mockk", version = "1.13.7" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.8" }
 
 kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
-dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "1.9.0" }
+dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "1.9.10" }
 maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.25.3" }
 
 binary-compatibility-validator-plugin = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version = "0.13.2" }

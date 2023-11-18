@@ -1,6 +1,6 @@
 @file:Annotator(
     "kotlin.js",
-    ignore = ["ExperimentalJsExport"]
+    ignore = ["ExperimentalJsExport", "ExperimentalJsFileName"]
 )
 
 package dev.kord.codegen.kotlinpoet.js

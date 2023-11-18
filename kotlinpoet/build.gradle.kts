@@ -6,12 +6,12 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(libs.kotlinpoet)
-    commonMainImplementation(kotlin("reflect"))
-    commonMainCompileOnly(projects.kotlinpoet.internalAnnotations)
-    kspCommonMainMetadata(projects.kotlinpoet.processor)
+    api(libs.kotlinpoet)
+    implementation(kotlin("reflect"))
+    compileOnly(projects.kotlinpoet.internalAnnotations)
+    ksp(projects.kotlinpoet.processor)
 
-    commonTestImplementation(kotlin("test-junit5"))
+    testImplementation(kotlin("test-junit5"))
 }
 
 kotlin {

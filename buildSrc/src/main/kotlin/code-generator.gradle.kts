@@ -1,76 +1,56 @@
-@file:Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
-
+import com.google.devtools.ksp.gradle.KspTask
 import dev.kord.codegen.gradle.CodeGenerationExtension
 import dev.kord.codegen.gradle.DownloadSourceTask
-import java.lang.Boolean as JBoolean
 
 plugins {
-    org.jetbrains.kotlin.multiplatform
+    org.jetbrains.kotlin.jvm
     com.google.devtools.ksp
 }
 
 val codeGenerationExtension = extensions.create("codeGeneration", CodeGenerationExtension::class)
-val generationSourceAttribute = Attribute.of("generationSource", JBoolean::class.java)
 val downloadSources by tasks.creating(DownloadSourceTask::class) {
     dependency = codeGenerationExtension.dependency
 }
 
 kotlin {
     explicitApi()
-    jvm()
-
-    targets {
-        jvm {
-            attributes {
-                attribute(generationSourceAttribute, false as java.lang.Boolean)
-            }
-        }
-        jvm("generationSource") {
-            attributes {
-                attribute(generationSourceAttribute, true as java.lang.Boolean)
-            }
-
-            compilations.all {
-                compilerOptions.configure {
-                    freeCompilerArgs.add("-Xjvm-default=all")
-                    // TODO: Suppress warnings once KT-8087 hits
-                }
+    target.compilations {
+        create("generationSource") {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xjvm-default=all")
+                // TODO: Suppress warnings once KT-8087 hits
             }
         }
     }
 
     sourceSets {
-        all {
+        main {
             languageSettings.optIn("dev.kord.codegen.kotlinpoet.CodeGenInternal")
+            kotlin.srcDir("build/generated/ksp/generationSource/kotlin")
         }
 
-        commonMain {
-            kotlin.srcDir("build/generated/ksp/generationSource/generationSourceMain/kotlin")
-        }
-
-        named("generationSourceMain") {
-            kotlin.srcDir(downloadSources.destinationDirectory.map { it.dir("main") })
+        named("generationSource") {
+            kotlin.srcDir(downloadSources.destinationDirectory.map { it.dir("commonMain") })
         }
     }
 }
 
 tasks {
-    named("compileKotlinGenerationSource") {
-        dependsOn(downloadSources)
-    }
-
     afterEvaluate {
-        val ksp = named("kspKotlinGenerationSource") {
+        val kspGenerationSourceKotlin by getting(KspTask::class) {
             dependsOn(downloadSources)
+            // We don't need to reify twice, actual reification occurs in main source
+            commandLineArgumentProviders.add(CommandLineArgumentProvider{ listOf("disable-reification=true") })
         }
-
-        listOf("compileKotlinJvm", "jvmSourcesJar").forEach {
-            named(it) {
-                dependsOn(ksp)
-            }
+        compileKotlin {
+            dependsOn(kspGenerationSourceKotlin)
+        }
+        named("kspKotlin") {
+            dependsOn(kspGenerationSourceKotlin)
         }
     }
 }
+
 
 ksp {
     arg { listOf("package-name=${codeGenerationExtension.packageName.get()}") }

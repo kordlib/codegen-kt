@@ -13,133 +13,133 @@ import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 import kotlin.reflect.KClass
 
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: TypeName,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: TypeName,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+  }
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: TypeName,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: TypeName,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers, block).also(::addParameter)
+  }
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: Type,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: Type,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+  }
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: Type,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: Type,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers, block).also(::addParameter)
+  }
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+  }
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: KClass<*>,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: KClass<*>,
+  modifiers: Iterable<KModifier>,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return produceByName { name ->
+    ParameterSpec(name, type, modifiers, block).also(::addParameter)
+  }
+}
+
 @DelicateKotlinPoetApi(message =
     "Element APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
 public fun FunSpec.Builder.addParameter(element: VariableElement): ParameterSpec =
     ParameterSpec(element).also(::addParameter)
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: TypeName,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: TypeName,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-  }
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: Type,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: Type,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-  }
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-  }
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: TypeName,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: TypeName,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers, block).also(::addParameter)
-  }
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: Type,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: Type,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers, block).also(::addParameter)
-  }
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: KClass<*>,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: KClass<*>,
-  modifiers: Iterable<KModifier>,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    ParameterSpec(name, type, modifiers, block).also(::addParameter)
-  }
-}

@@ -80,7 +80,7 @@ private fun KSClassDeclaration.dataClassSpec(
     packageName: String,
     additionalBuilder: TypeSpec.Builder.() -> Unit = {}
 ): TypeSpec {
-    return `class`(simpleName.asString()) {
+    return `class`(simpleName.asString()) clazz@{
         addKdoc(
             """Data class representation of [%T].
             |@see Companion.%L
@@ -100,7 +100,7 @@ private fun KSClassDeclaration.dataClassSpec(
                 val name = it.simpleName.asString()
                 val type = it.dataClassType(this@dataClassSpec)
                 val parameter = addParameter(name, type) {}
-                this@`class`.addProperty(name, type) {
+                this@clazz.addProperty(name, type) {
                     initializer("%N", parameter)
                 }
             }

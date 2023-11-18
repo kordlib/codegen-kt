@@ -1,6 +1,5 @@
 package dev.kord.codegen.generator
 
-import com.google.devtools.ksp.containingFile
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
