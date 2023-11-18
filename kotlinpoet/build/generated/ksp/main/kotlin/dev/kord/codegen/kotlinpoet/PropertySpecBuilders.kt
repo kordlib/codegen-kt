@@ -27,11 +27,8 @@ public fun TypeSpec.Builder.addProperty(
   type: TypeName,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 public inline fun TypeSpec.Builder.addProperty(
@@ -48,11 +45,8 @@ public fun TypeSpec.Builder.addProperty(
   type: TypeName,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 public inline fun TypeSpec.Builder.addProperty(
@@ -69,11 +63,8 @@ public fun TypeSpec.Builder.addProperty(
   type: Type,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 @DelicateKotlinPoetApi(message =
@@ -94,11 +85,8 @@ public fun TypeSpec.Builder.addProperty(
   type: Type,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 public inline fun TypeSpec.Builder.addProperty(
@@ -115,11 +103,8 @@ public fun TypeSpec.Builder.addProperty(
   type: KClass<*>,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 public inline fun TypeSpec.Builder.addProperty(
@@ -136,11 +121,8 @@ public fun TypeSpec.Builder.addProperty(
   type: KClass<*>,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 public inline fun FileSpec.Builder.addProperty(
@@ -157,11 +139,8 @@ public fun FileSpec.Builder.addProperty(
   type: TypeName,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 public inline fun FileSpec.Builder.addProperty(
@@ -178,11 +157,8 @@ public fun FileSpec.Builder.addProperty(
   type: TypeName,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 public inline fun FileSpec.Builder.addProperty(
@@ -199,11 +175,8 @@ public fun FileSpec.Builder.addProperty(
   type: Type,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 @DelicateKotlinPoetApi(message =
@@ -224,11 +197,8 @@ public fun FileSpec.Builder.addProperty(
   type: Type,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 public inline fun FileSpec.Builder.addProperty(
@@ -245,11 +215,8 @@ public fun FileSpec.Builder.addProperty(
   type: KClass<*>,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 public inline fun FileSpec.Builder.addProperty(
@@ -266,9 +233,6 @@ public fun FileSpec.Builder.addProperty(
   type: KClass<*>,
   modifiers: Iterable<KModifier>,
   block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return produceByName { name ->
-    PropertySpec(name, type, modifiers, block).also(::addProperty)
-  }
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }

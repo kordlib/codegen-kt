@@ -1,5 +1,3 @@
-@file:Suppress("INVISIBLE_REFERENCE")
-
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.DelicateKotlinPoetApi

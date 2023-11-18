@@ -21,10 +21,8 @@ public inline fun <reified T> TypeSpec.Builder.addProperty(
 }
 
 public inline fun <reified T> TypeSpec.Builder.addProperty(vararg modifiers: KModifier, noinline
-    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addProperty(typeNameOf<T>(), modifiers = modifiers, block)
-}
+    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
+    addProperty(typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> TypeSpec.Builder.addProperty(
   name: String,
@@ -36,10 +34,8 @@ public inline fun <reified T> TypeSpec.Builder.addProperty(
 }
 
 public inline fun <reified T> TypeSpec.Builder.addProperty(modifiers: Iterable<KModifier>, noinline
-    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addProperty(typeNameOf<T>(), modifiers, block)
-}
+    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
+    addProperty(typeNameOf<T>(), modifiers, block)
 
 public inline fun <reified T> FileSpec.Builder.addProperty(
   name: String,
@@ -51,10 +47,8 @@ public inline fun <reified T> FileSpec.Builder.addProperty(
 }
 
 public inline fun <reified T> FileSpec.Builder.addProperty(vararg modifiers: KModifier, noinline
-    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addProperty(typeNameOf<T>(), modifiers = modifiers, block)
-}
+    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
+    addProperty(typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> FileSpec.Builder.addProperty(
   name: String,
@@ -66,7 +60,5 @@ public inline fun <reified T> FileSpec.Builder.addProperty(
 }
 
 public inline fun <reified T> FileSpec.Builder.addProperty(modifiers: Iterable<KModifier>, noinline
-    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addProperty(typeNameOf<T>(), modifiers, block)
-}
+    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
+    addProperty(typeNameOf<T>(), modifiers, block)

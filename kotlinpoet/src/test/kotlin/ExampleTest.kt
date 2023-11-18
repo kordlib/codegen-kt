@@ -46,6 +46,7 @@ class ExampleTest {
     @Test
     fun test() = main()
 
+    @OptIn(DelicateKotlinPoetApi::class)
     @Test
     fun test2() {
         fun generateListOf() = FunSpec("minOf") {

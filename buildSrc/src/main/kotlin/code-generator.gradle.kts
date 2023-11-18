@@ -40,7 +40,7 @@ tasks {
         val kspGenerationSourceKotlin by getting(KspTask::class) {
             dependsOn(downloadSources)
             // We don't need to reify twice, actual reification occurs in main source
-            commandLineArgumentProviders.add(CommandLineArgumentProvider{ listOf("disable-reification=true") })
+            commandLineArgumentProviders.add(CommandLineArgumentProvider{ listOf("only-reify=com.squareup.kotlinpoet") })
         }
         compileKotlin {
             dependsOn(kspGenerationSourceKotlin)

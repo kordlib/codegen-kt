@@ -106,7 +106,7 @@ fun MaybeReifiableFunction.reify(): FunSpec {
 
         addAnnotationsFromFunction(this@reify)
         val builderParameter = this@reify.parameters.firstOrNull { it.type.isCallableType() }
-        if (builderParameter != null) {
+        if (builderParameter != null && Modifier.INLINE in this@reify.modifiers) {
             addCallsInPlaceExactlyOnce(ParameterSpec(builderParameter.name!!.asString(), NOTHING))
         }
         addCode("return·%N(%L)", simpleName.asString(), valueParameters)

@@ -49,12 +49,26 @@ public inline fun TypeSpecHolder.Builder<*>.addEnum(name: String, block: TypeSpe
   return TypeSpec.`enum`(name, block).also(::addType)
 }
 
+@Deprecated(
+  replaceWith = ReplaceWith(imports = arrayOf(), expression =
+        "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
+  message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
+  level = DeprecationLevel.WARNING,
+)
+@Suppress(names = arrayOf("DEPRECATION"))
 public inline fun TypeSpecHolder.Builder<*>.addExpectClass(className: ClassName,
     block: TypeSpecBuilderScope = {}): TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return TypeSpec.expectClass(className, block).also(::addType)
 }
 
+@Deprecated(
+  replaceWith = ReplaceWith(imports = arrayOf(), expression =
+        "TypeSpec.classBuilder(name).addModifiers(KModifier.EXPECT)"),
+  message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
+  level = DeprecationLevel.WARNING,
+)
+@Suppress(names = arrayOf("DEPRECATION"))
 public inline fun TypeSpecHolder.Builder<*>.addExpectClass(name: String, block: TypeSpecBuilderScope
     = {}): TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
@@ -97,6 +111,13 @@ public inline fun TypeSpecHolder.Builder<*>.addObject(name: String, block: TypeS
   return TypeSpec.`object`(name, block).also(::addType)
 }
 
+@Deprecated(
+  replaceWith = ReplaceWith(imports = arrayOf(), expression =
+        "TypeSpec.classBuilder(name).addModifiers(KModifier.VALUE)"),
+  message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
+  level = DeprecationLevel.WARNING,
+)
+@Suppress(names = arrayOf("DEPRECATION"))
 public inline fun TypeSpecHolder.Builder<*>.addValueClass(name: String, block: TypeSpecBuilderScope
     = {}): TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }

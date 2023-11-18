@@ -64,9 +64,11 @@ public final class dev/kord/codegen/kotlinpoet/EnumConstantHelperKt {
 
 public final class dev/kord/codegen/kotlinpoet/FileSpecFactoriesKt {
 	public static final fun FileSpec (Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
+	public static final fun FileSpec (Lcom/squareup/kotlinpoet/MemberName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static final fun FileSpec (Ljava/lang/String;Lcom/squareup/kotlinpoet/TypeSpec;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static final fun FileSpec (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static synthetic fun FileSpec$default (Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/FileSpec;
+	public static synthetic fun FileSpec$default (Lcom/squareup/kotlinpoet/MemberName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static synthetic fun FileSpec$default (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static final fun script (Lcom/squareup/kotlinpoet/FileSpec$Companion;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FileSpec;
 	public static synthetic fun script$default (Lcom/squareup/kotlinpoet/FileSpec$Companion;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/FileSpec;
@@ -234,70 +236,38 @@ public final class dev/kord/codegen/kotlinpoet/TypeAliasSpecFactoriesKt {
 }
 
 public final class dev/kord/codegen/kotlinpoet/TypeSpecBuildersKt {
-	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addCompanionObject (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addCompanionObject (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addCompanionObject$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addCompanionObject$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addEnum (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addEnum (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addEnum (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addEnum (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addInterface (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addInterface (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addInterface (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addInterface (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addObject (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addObject (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addObject (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addObject (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addValueClass (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static final fun addValueClass (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addValueClass$default (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
-	public static synthetic fun addValueClass$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addAnnotationClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addAnnotationClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addCompanionObject (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addCompanionObject$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addEnum (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addEnum (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addEnum$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addExpectClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addExpectClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addFunInterface (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addFunInterface$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addInterface (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addInterface (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addInterface$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addObject (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addObject (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Lcom/squareup/kotlinpoet/ClassName;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addObject$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static final fun addValueClass (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/TypeSpec;
+	public static synthetic fun addValueClass$default (Lcom/squareup/kotlinpoet/TypeSpecHolder$Builder;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/TypeSpec;
 	public static final fun primaryConstructor (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lkotlin/jvm/functions/Function1;)Lcom/squareup/kotlinpoet/FunSpec;
 	public static synthetic fun primaryConstructor$default (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/FunSpec;
 }
@@ -367,6 +337,11 @@ public final class dev/kord/codegen/kotlinpoet/delegate/SubSpecDelegateProvider 
 }
 
 public final class dev/kord/codegen/kotlinpoet/js/JsAnnotationsKt {
+	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
+	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/ParameterSpec$Builder;)V
+	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
+	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/TypeAliasSpec$Builder;)V
+	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
 	public static final fun ignore (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
 	public static final fun ignore (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
 	public static final fun ignore (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
@@ -374,6 +349,7 @@ public final class dev/kord/codegen/kotlinpoet/js/JsAnnotationsKt {
 	public static final fun jsExport (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
 	public static final fun jsExport (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
 	public static final fun jsExport (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
+	public static final fun jsFileName (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;)V
 	public static final fun jsName (Lcom/squareup/kotlinpoet/FunSpec$Builder;Ljava/lang/String;)V
 	public static final fun jsName (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Ljava/lang/String;)V
 	public static final fun jsName (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;)V

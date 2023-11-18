@@ -56,6 +56,7 @@ object ReifyingVisitor : VisitorBase() {
         data: SymbolProcessorEnvironment
     ) {
         val ignoredFiles = data.options["ignore-reification"].toString().split(" ")
+        val packages = data.options["only-reify"]
         val fileSpec = FileSpec.builder(data.packageName, declarationContainer.simpleName + "Reified").apply {
             (declarationContainer.getDeclaredFunctions() + declarationContainer.declarations
                 .filterIsInstance<KSDeclarationContainer>()
@@ -66,6 +67,7 @@ object ReifyingVisitor : VisitorBase() {
                 }
                 .filter { it is KSFile || (it as KSClassDeclaration).isPublic() }
                 .flatMap(KSDeclarationContainer::getDeclaredFunctions))
+                .filter { packages == null || it.packageName.asString().startsWith(packages) }
                 .filter { it.isReifiable() && !it.isConstructor() && it.isPublic() }
                 .process()
                 .forEach {

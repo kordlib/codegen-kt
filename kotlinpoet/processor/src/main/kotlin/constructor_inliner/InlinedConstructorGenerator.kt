@@ -37,6 +37,9 @@ fun FactoryFunction.generateInlinedConstructorWithNameParameter(
 ): FunSpec = generateInlinedConstructor(packageName, constructor) {
     addParameters(this@generateInlinedConstructorWithNameParameter.parameters.map(KSValueParameter::toParameterSpec))
     returns(specType.toClassName())
+    if (hasBuilder) {
+        addCallsInPlaceExactlyOnce(getBuilderParameter(packageName))
+    }
     addCode(
         "return·%L(%L).also(::%L)",
         builderFunctionName(),
@@ -122,7 +125,6 @@ private fun FactoryFunction.generateInlinedConstructor(
             if (!noinline) {
                 addModifiers(KModifier.INLINE)
             }
-            addCallsInPlaceExactlyOnce(builderParameter)
         }
 
         addAnnotationsFromFunction(this@generateInlinedConstructor)

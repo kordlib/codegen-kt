@@ -1,9 +1,6 @@
-@file:Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
-
 package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.*
-import kotlin.internal.HidesMembers
 
 /**
  * Scope for [withNameAllocator].
@@ -15,7 +12,7 @@ public typealias NamingScope = @CodeGenDsl NameAllocator.() -> Unit
  *
  * @see CodeBlock
  */
-@Suppress("INVISIBLE_MEMBER")
+@Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
 public fun emptyCodeBlock(): CodeBlock = CodeBlock.EMPTY
 
 /**

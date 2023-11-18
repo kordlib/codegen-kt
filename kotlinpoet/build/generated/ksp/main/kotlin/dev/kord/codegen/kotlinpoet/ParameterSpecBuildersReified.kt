@@ -20,10 +20,8 @@ public inline fun <reified T> FunSpec.Builder.addParameter(
 }
 
 public inline fun <reified T> FunSpec.Builder.addParameter(vararg modifiers: KModifier, noinline
-    block: ParameterSpecBuilderScope = {}): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addParameter(typeNameOf<T>(), modifiers = modifiers, block)
-}
+    block: ParameterSpecBuilderScope = {}): SubSpecDelegateProvider<ParameterSpec> =
+    addParameter(typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> FunSpec.Builder.addParameter(
   name: String,
@@ -35,7 +33,5 @@ public inline fun <reified T> FunSpec.Builder.addParameter(
 }
 
 public inline fun <reified T> FunSpec.Builder.addParameter(modifiers: Iterable<KModifier>, noinline
-    block: ParameterSpecBuilderScope = {}): SubSpecDelegateProvider<ParameterSpec> {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return addParameter(typeNameOf<T>(), modifiers, block)
-}
+    block: ParameterSpecBuilderScope = {}): SubSpecDelegateProvider<ParameterSpec> =
+    addParameter(typeNameOf<T>(), modifiers, block)

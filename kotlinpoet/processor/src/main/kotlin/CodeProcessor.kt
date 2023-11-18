@@ -27,7 +27,6 @@ private class CodeProcessor private constructor(private val environment: SymbolP
     override fun process(resolver: Resolver): List<KSAnnotated> {
         resolver.getNewFiles()
             .onEach {
-                if (!environment.options["disable-reification"].toBoolean())
                 it.accept(environment, ReifyingVisitor)
             }
             .flatMap(KSFile::declarations)

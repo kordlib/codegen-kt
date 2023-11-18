@@ -2,6 +2,10 @@ package dev.kord.codegen.kotlinpoet
 
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
+import kotlin.Deprecated
+import kotlin.DeprecationLevel
+import kotlin.ReplaceWith
+import kotlin.Suppress
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 
@@ -11,6 +15,13 @@ public inline fun <reified C> TypeSpec.Companion.`class`(block: TypeSpecBuilderS
   return `class`(C::class.asClassName(), block)
 }
 
+@Deprecated(
+  message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
+  replaceWith = ReplaceWith(imports = arrayOf(), expression =
+        "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
+  level = DeprecationLevel.WARNING,
+)
+@Suppress(names = arrayOf("DEPRECATION"))
 public inline fun <reified C> TypeSpec.Companion.expectClass(block: TypeSpecBuilderScope = {}):
     TypeSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
