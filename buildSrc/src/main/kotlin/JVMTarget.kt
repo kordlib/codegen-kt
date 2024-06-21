@@ -24,8 +24,10 @@ fun Project.configureJVMTarget() {
     plugins.withId("org.jetbrains.kotlin.multiplatform") {
         the<KotlinMultiplatformExtension>().targets.withType<KotlinJvmTarget> {
             compilations.all {
-                compilerOptions.configure {
-                    jvmTarget = JvmTarget.JVM_1_8
+                compileTaskProvider.configure {
+                    compilerOptions {
+                        jvmTarget = JvmTarget.JVM_1_8
+                    }
                 }
             }
         }

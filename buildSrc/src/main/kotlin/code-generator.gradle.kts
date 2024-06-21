@@ -16,9 +16,11 @@ kotlin {
     explicitApi()
     target.compilations {
         create("generationSource") {
-            compilerOptions.configure {
-                freeCompilerArgs.add("-Xjvm-default=all")
-                // TODO: Suppress warnings once KT-8087 hits
+            compileTaskProvider.configure {
+                compilerOptions {
+                    freeCompilerArgs.add("-Xjvm-default=all")
+                    // TODO: Suppress warnings once KT-8087 hits
+                }
             }
         }
     }
