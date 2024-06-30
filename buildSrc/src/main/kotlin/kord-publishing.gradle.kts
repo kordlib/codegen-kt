@@ -3,9 +3,6 @@ import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import org.intellij.lang.annotations.Language
 import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinMetadataTarget
-import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 
 plugins {
     org.jetbrains.dokka
@@ -50,7 +47,7 @@ tasks {
 }
 
 mavenPublishing {
-    publishToMavenCentral()
+    publishToMavenCentral(automaticRelease = true)
     if (!System.getenv("ORG_GRADLE_PROJECT_signingInMemoryKey").isNullOrBlank()) {
         signAllPublications()
     }

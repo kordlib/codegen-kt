@@ -224,6 +224,6 @@ public class AnnotationArguments<A : Annotation> private constructor(
          * @see AnnotationArguments
          */
         public fun <A : Annotation> KSAnnotation.arguments(): AnnotationArguments<A> =
-            AnnotationArguments(arguments.associateBy { it.name!!.asString() })
+            AnnotationArguments(defaultArguments.associateBy { it.name!!.asString() } + arguments.associateBy { it.name!!.asString() })
     }
 }

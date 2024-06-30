@@ -28,4 +28,5 @@ private fun mockValueArgumentInternal(name: String, value: Any?, origin: Origin 
 
 fun mockAnnotation() = mockk<KSAnnotation> {
     every { arguments } returns _arguments
+    every { defaultArguments } returns _arguments
 }

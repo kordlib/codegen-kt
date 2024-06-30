@@ -38,12 +38,10 @@ private fun KSTypeReference.dataClassType(rootType: KSClassDeclaration): TypeNam
 
         else -> {
             val declaration = resolvedType.declaration
-            if (resolvedType.isMappedAnnotation(rootType)
-                || (resolvedType.declaration as? KSClassDeclaration)?.classKind == ClassKind.ENUM_CLASS
-            ) {
-                ClassName("", declaration.simpleName.asString())
-            } else {
-                KSAnnotation::class.asClassName()
+            when {
+                resolvedType.isMappedAnnotation(rootType) -> ClassName("", declaration.simpleName.asString())
+                (resolvedType.declaration as? KSClassDeclaration)?.classKind == ClassKind.ENUM_CLASS -> (declaration as KSClassDeclaration).toClassName()
+                else -> KSAnnotation::class.asClassName()
             }
         }
     }
