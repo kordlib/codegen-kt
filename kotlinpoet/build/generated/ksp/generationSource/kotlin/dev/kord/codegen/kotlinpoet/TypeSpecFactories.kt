@@ -21,8 +21,8 @@ public inline fun TypeSpec.Companion.`class`(className: ClassName, block: TypeSp
 
 @Deprecated(
     message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
-    replaceWith = ReplaceWith(imports = arrayOf(), expression =
-                "TypeSpec.classBuilder(name).addModifiers(KModifier.EXPECT)"),
+    replaceWith = ReplaceWith(expression =
+            "TypeSpec.classBuilder(name).addModifiers(KModifier.EXPECT)"),
     level = DeprecationLevel.WARNING,
 )
 @Suppress(names = arrayOf("DEPRECATION"))
@@ -34,8 +34,8 @@ public inline fun TypeSpec.Companion.expectClass(name: String, block: TypeSpecBu
 
 @Deprecated(
     message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
-    replaceWith = ReplaceWith(imports = arrayOf(), expression =
-                "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
+    replaceWith = ReplaceWith(expression =
+            "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
     level = DeprecationLevel.WARNING,
 )
 @Suppress(names = arrayOf("DEPRECATION"))
@@ -47,8 +47,8 @@ public inline fun TypeSpec.Companion.expectClass(className: ClassName, block: Ty
 
 @Deprecated(
     message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
-    replaceWith = ReplaceWith(imports = arrayOf(), expression =
-                "TypeSpec.classBuilder(name).addModifiers(KModifier.VALUE)"),
+    replaceWith = ReplaceWith(expression =
+            "TypeSpec.classBuilder(name).addModifiers(KModifier.VALUE)"),
     level = DeprecationLevel.WARNING,
 )
 @Suppress(names = arrayOf("DEPRECATION"))

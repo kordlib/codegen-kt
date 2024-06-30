@@ -29,8 +29,8 @@ public inline fun <reified C> TypeSpecHolder.Builder<*>.addEnum(block: TypeSpecB
 }
 
 @Deprecated(
-  replaceWith = ReplaceWith(imports = arrayOf(), expression =
-        "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
+  replaceWith = ReplaceWith(expression =
+      "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
   message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
   level = DeprecationLevel.WARNING,
 )

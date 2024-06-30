@@ -45,6 +45,20 @@ public fun PropertySpec.Builder.experimentalJsReflectionCreateInstance() {
 }
 
 /**
+ * Adds `ExperimentalJsCollectionsApi` to this [FunSpec]
+ */
+public fun FunSpec.Builder.experimentalJsCollectionsApi() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsCollectionsApi"))
+}
+
+/**
+ * Adds `ExperimentalJsCollectionsApi` to this [TypeSpec]
+ */
+public fun TypeSpec.Builder.experimentalJsCollectionsApi() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsCollectionsApi"))
+}
+
+/**
  * Adds `JsName` to this [FunSpec]
  */
 public fun FunSpec.Builder.jsName(name: String) {

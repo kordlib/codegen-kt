@@ -90,6 +90,7 @@ modules.xml
 
 ### Gradle ###
 .gradle
+.kotlin
 **/build/*
 !src/**/build/
 

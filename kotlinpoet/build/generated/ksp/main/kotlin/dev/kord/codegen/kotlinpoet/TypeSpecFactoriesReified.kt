@@ -17,8 +17,8 @@ public inline fun <reified C> TypeSpec.Companion.`class`(block: TypeSpecBuilderS
 
 @Deprecated(
   message = "Use classBuilder() instead. This function will be removed in KotlinPoet 2.0.",
-  replaceWith = ReplaceWith(imports = arrayOf(), expression =
-        "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
+  replaceWith = ReplaceWith(expression =
+      "TypeSpec.classBuilder(className).addModifiers(KModifier.EXPECT)"),
   level = DeprecationLevel.WARNING,
 )
 @Suppress(names = arrayOf("DEPRECATION"))
