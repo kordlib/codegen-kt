@@ -1,6 +1,6 @@
 # Annotation Argument Processor
 
-Even though the [Annotation Argument API](Annotation-Argument-Processor.md) provides an easier to use API than the
+Even though the Annotation Argument API provides an easier to use API than the
 default KSP API, it can still require some boiler-plate to setup. For this reason an annotation processor is provided
 to generate that boiler plate for you
 

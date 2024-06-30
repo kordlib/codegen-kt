@@ -3,10 +3,14 @@
     <variables>
         <enable-browser-edits>true</enable-browser-edits>
         <browser-edits-url>https://github.com/kordlib/codegen-kt/edit/main/docs/</browser-edits-url>
+
+        <algolia-id>JYGRRNLGJT</algolia-id>
+        <algolia-index>codegen_kt_wiki</algolia-index>
+        <algolia-api-key>5923511b60eb8db61a58902f9d3d4cc4</algolia-api-key>
     </variables>
     <build-profile instance="codegen.kt"/>
     <footer>
-        <copyright>Kord Team 2019-2023</copyright>
+        <copyright>Kord Team 2019-2024</copyright>
         <link href="https://github.com/kordlib">GitHub</link>
     </footer>
 </buildprofiles>
