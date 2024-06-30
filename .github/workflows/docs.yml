@@ -16,4 +16,4 @@ jobs:
       product: C
       algolia-index: codegen_kt_wiki
       version: main-SNAPSHOT
-      algolia-token: ${{ secrets.ALGOLIA_KEY }}
+      algolia-token: '${{ secrets.ALGOLIA_KEY }}'
