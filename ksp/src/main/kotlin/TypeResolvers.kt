@@ -24,8 +24,29 @@ public inline fun <reified A : Annotation> Resolver.getSymbolsWithAnnotation(inD
  *
  * @see getAnnotationsByType
  */
+public inline fun <reified A : Annotation> KSAnnotated.getAnnotationsByType(): Sequence<KSAnnotation> {
+    val annotationKClass = A::class
+    return this.annotations.filter {
+        it.shortName.getShortName() == annotationKClass.simpleName && it.annotationType.resolve().declaration
+            .qualifiedName?.asString() == annotationKClass.qualifiedName
+    }
+}
+
+/**
+ * Returns an [KSAnnotation] from [A].
+ *
+ * @see getAnnotationsByType
+ */
+public inline fun <reified A : Annotation> KSAnnotated.getAnnotationOfType(): A =
+    getAnnotationsOfType<A>().first()
+
+/**
+ * Returns all [KSAnnotations][KSAnnotation] from [A].
+ *
+ * @see getAnnotationsByType
+ */
 @OptIn(KspExperimental::class)
-public inline fun <reified A : Annotation> KSAnnotated.getAnnotationsByType(): Sequence<A> =
+public inline fun <reified A : Annotation> KSAnnotated.getAnnotationsOfType(): Sequence<A> =
     getAnnotationsByType(A::class)
 
 /**
@@ -33,7 +54,7 @@ public inline fun <reified A : Annotation> KSAnnotated.getAnnotationsByType(): S
  *
  * @see getAnnotationsByType
  */
-public inline fun <reified A : Annotation> KSAnnotated.getAnnotationByType(): A =
+public inline fun <reified A : Annotation> KSAnnotated.getAnnotationByType(): KSAnnotation =
     getAnnotationsByType<A>().first()
 
 /**
