@@ -28,7 +28,7 @@ abstract class DownloadSourceTask : DefaultTask() {
         }
 
         val artifacts = project.dependencies.createArtifactResolutionQuery()
-            .forModule(dependency.group!!, dependency.name, dependency.version as String)
+            .forModule(dependency.group, dependency.name, dependency.version as String)
             .withArtifacts(JvmLibrary::class.java, SourcesArtifact::class.java)
             .execute()
 

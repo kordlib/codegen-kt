@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.0"
-kotlinpoet = "1.17.0"
-ksp = "2.0.0-1.0.22"
+kotlinpoet = "1.18.1"
+ksp = "2.0.0-1.0.24"
 
 # The compiled binary of codegen.kt we use to compile codegen.kt itself
 codegen-kt = "main-SNAPSHOT"
@@ -15,7 +15,7 @@ codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version 
 codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-20230912.211940-5" }
 codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-20230912.211940-7" }
 
-mockk = { group = "io.mockk", name = "mockk", version = "1.13.11" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.12" }
 
 kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
