@@ -74,7 +74,7 @@ private fun KSClassDeclaration.dataClassSpec(
     packageName: String,
     additionalBuilder: TypeSpec.Builder.() -> Unit = {}
 ): TypeSpec {
-    return `class`(simpleName.asString()) clazz@{
+    return TypeSpec. `class`(simpleName.asString()) clazz@{
         addKdoc(
             """Data class representation of [%T].
             |@see Companion.%L

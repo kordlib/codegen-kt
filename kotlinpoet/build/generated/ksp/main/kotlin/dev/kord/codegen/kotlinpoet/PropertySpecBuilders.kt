@@ -32,24 +32,6 @@ public fun MemberSpecHolder.Builder<*>.addProperty(
 
 public inline fun MemberSpecHolder.Builder<*>.addProperty(
   name: String,
-  type: TypeName,
-  modifiers: Iterable<KModifier>,
-  block: PropertySpecBuilderScope = {},
-): PropertySpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return PropertySpec(name, type, modifiers, block).also(::addProperty)
-}
-
-public fun MemberSpecHolder.Builder<*>.addProperty(
-  type: TypeName,
-  modifiers: Iterable<KModifier>,
-  block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
-  PropertySpec(name, type, modifiers, block).also(::addProperty)
-}
-
-public inline fun MemberSpecHolder.Builder<*>.addProperty(
-  name: String,
   type: Type,
   vararg modifiers: KModifier,
   block: PropertySpecBuilderScope = {},
@@ -64,6 +46,42 @@ public fun MemberSpecHolder.Builder<*>.addProperty(
   block: PropertySpecBuilderScope = {},
 ): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
   PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
+}
+
+public inline fun MemberSpecHolder.Builder<*>.addProperty(
+  name: String,
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: PropertySpecBuilderScope = {},
+): PropertySpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
+}
+
+public fun MemberSpecHolder.Builder<*>.addProperty(
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: PropertySpecBuilderScope = {},
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
+}
+
+public inline fun MemberSpecHolder.Builder<*>.addProperty(
+  name: String,
+  type: TypeName,
+  modifiers: Iterable<KModifier>,
+  block: PropertySpecBuilderScope = {},
+): PropertySpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return PropertySpec(name, type, modifiers, block).also(::addProperty)
+}
+
+public fun MemberSpecHolder.Builder<*>.addProperty(
+  type: TypeName,
+  modifiers: Iterable<KModifier>,
+  block: PropertySpecBuilderScope = {},
+): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
+  PropertySpec(name, type, modifiers, block).also(::addProperty)
 }
 
 @DelicateKotlinPoetApi(message =
@@ -86,24 +104,6 @@ public fun MemberSpecHolder.Builder<*>.addProperty(
   block: PropertySpecBuilderScope = {},
 ): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
   PropertySpec(name, type, modifiers, block).also(::addProperty)
-}
-
-public inline fun MemberSpecHolder.Builder<*>.addProperty(
-  name: String,
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: PropertySpecBuilderScope = {},
-): PropertySpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
-}
-
-public fun MemberSpecHolder.Builder<*>.addProperty(
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: PropertySpecBuilderScope = {},
-): SubSpecDelegateProvider<PropertySpec> = produceByName { name ->
-  PropertySpec(name, type, modifiers = modifiers, block).also(::addProperty)
 }
 
 public inline fun MemberSpecHolder.Builder<*>.addProperty(

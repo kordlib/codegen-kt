@@ -33,6 +33,42 @@ public fun FunSpec.Builder.addParameter(
 
 public inline fun FunSpec.Builder.addParameter(
   name: String,
+  type: Type,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: Type,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> = produceByName { name ->
+  ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): ParameterSpec {
+  contract { callsInPlace(block, EXACTLY_ONCE) }
+  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public fun FunSpec.Builder.addParameter(
+  type: KClass<*>,
+  vararg modifiers: KModifier,
+  block: ParameterSpecBuilderScope = {},
+): SubSpecDelegateProvider<ParameterSpec> = produceByName { name ->
+  ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
+}
+
+public inline fun FunSpec.Builder.addParameter(
+  name: String,
   type: TypeName,
   modifiers: Iterable<KModifier>,
   block: ParameterSpecBuilderScope = {},
@@ -52,24 +88,6 @@ public fun FunSpec.Builder.addParameter(
 public inline fun FunSpec.Builder.addParameter(
   name: String,
   type: Type,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: Type,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> = produceByName { name ->
-  ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: Type,
   modifiers: Iterable<KModifier>,
   block: ParameterSpecBuilderScope = {},
 ): ParameterSpec {
@@ -83,24 +101,6 @@ public fun FunSpec.Builder.addParameter(
   block: ParameterSpecBuilderScope = {},
 ): SubSpecDelegateProvider<ParameterSpec> = produceByName { name ->
   ParameterSpec(name, type, modifiers, block).also(::addParameter)
-}
-
-public inline fun FunSpec.Builder.addParameter(
-  name: String,
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): ParameterSpec {
-  contract { callsInPlace(block, EXACTLY_ONCE) }
-  return ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
-}
-
-public fun FunSpec.Builder.addParameter(
-  type: KClass<*>,
-  vararg modifiers: KModifier,
-  block: ParameterSpecBuilderScope = {},
-): SubSpecDelegateProvider<ParameterSpec> = produceByName { name ->
-  ParameterSpec(name, type, modifiers = modifiers, block).also(::addParameter)
 }
 
 public inline fun FunSpec.Builder.addParameter(

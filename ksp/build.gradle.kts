@@ -11,7 +11,21 @@ kotlin {
 
 dependencies {
     api(libs.ksp.api)
-    ksp(libs.codegen.ksp.processor)
+    ksp(libs.codegen.kotlinpoet) {
+        version {
+            strictly("main-20240811.165308-18")
+        }
+    }
+    ksp(libs.codegen.ksp) {
+        version {
+            strictly("main-20240811.165308-20")
+        }
+    }
+    ksp(libs.codegen.ksp.processor) {
+        version {
+            strictly("main-20240811.165308-19")
+        }
+    }
     testImplementation(libs.mockk)
     testImplementation(kotlin("test-junit5"))
 }
