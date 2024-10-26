@@ -25,13 +25,18 @@ allprojects {
     }
 }
 
+dependencies {
+//    dokka(projects.ksp.annotations)
+    dokka(projects.ksp)
+    dokka(projects.kotlinpoet)
+}
+
 subprojects {
     configureJVMTarget()
 }
 
 tasks {
-    dokkaHtmlMultiModule {
-        outputDirectory = layout.projectDirectory.dir("docs/api")
+    dokkaGeneratePublicationHtml {
+
     }
 }
-

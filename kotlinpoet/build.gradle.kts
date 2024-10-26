@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.targets.jvm.tasks.KotlinJvmTest
 
 plugins {
     `code-generator`
+    org.jetbrains.kotlinx.`binary-compatibility-validator`
     `kord-publishing`
 }
 

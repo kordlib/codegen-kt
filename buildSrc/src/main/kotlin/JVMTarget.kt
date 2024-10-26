@@ -11,13 +11,13 @@ import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 fun Project.configureJVMTarget() {
     plugins.withId("org.gradle.java") {
         configure<JavaPluginExtension> {
-            sourceCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_21
         }
     }
 
     plugins.withId("org.jetbrains.kotlin.jvm") {
         the<KotlinJvmProjectExtension>().compilerOptions {
-            jvmTarget = JvmTarget.JVM_1_8
+            jvmTarget = JvmTarget.JVM_21
         }
     }
 
@@ -26,7 +26,7 @@ fun Project.configureJVMTarget() {
             compilations.all {
                 compileTaskProvider.configure {
                     compilerOptions {
-                        jvmTarget = JvmTarget.JVM_1_8
+                        jvmTarget = JvmTarget.JVM_21
                     }
                 }
             }

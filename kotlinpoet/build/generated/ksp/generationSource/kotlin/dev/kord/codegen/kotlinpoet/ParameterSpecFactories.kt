@@ -13,8 +13,7 @@ import kotlin.reflect.KClass
 
 public typealias ParameterSpecBuilderScope = @CodeGenDsl ParameterSpec.Builder.() -> Unit
 
-@DelicateKotlinPoetApi(message =
-        "Element APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
+@DelicateKotlinPoetApi(message = "Element APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
 public fun ParameterSpec(element: VariableElement): ParameterSpec = `get`(element)
 
 public inline fun ParameterSpec(

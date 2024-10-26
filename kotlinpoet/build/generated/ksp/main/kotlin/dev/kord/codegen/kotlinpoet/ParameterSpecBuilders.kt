@@ -121,7 +121,5 @@ public fun FunSpec.Builder.addParameter(
   ParameterSpec(name, type, modifiers, block).also(::addParameter)
 }
 
-@DelicateKotlinPoetApi(message =
-    "Element APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
-public fun FunSpec.Builder.addParameter(element: VariableElement): ParameterSpec =
-    ParameterSpec(element).also(::addParameter)
+@DelicateKotlinPoetApi(message = "Element APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
+public fun FunSpec.Builder.addParameter(element: VariableElement): ParameterSpec = ParameterSpec(element).also(::addParameter)

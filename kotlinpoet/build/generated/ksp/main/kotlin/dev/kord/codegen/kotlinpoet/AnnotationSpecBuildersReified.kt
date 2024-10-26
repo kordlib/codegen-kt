@@ -7,8 +7,7 @@ import kotlin.Annotation
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 
-public inline fun <reified T : Annotation>
-    Annotatable.Builder<*>.addAnnotation(block: AnnotationSpecBuilderScope = {}): AnnotationSpec {
+public inline fun <reified T : Annotation> Annotatable.Builder<*>.addAnnotation(block: AnnotationSpecBuilderScope = {}): AnnotationSpec {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return addAnnotation(T::class.asClassName(), block)
 }

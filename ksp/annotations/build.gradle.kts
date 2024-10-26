@@ -1,7 +1,12 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
     org.jetbrains.kotlin.multiplatform
-    `kord-publishing`
+//    `kord-publishing`
     com.google.devtools.ksp
+    id("com.vanniktech.maven.publish.base")
 }
 
 base {
@@ -37,9 +42,12 @@ kotlin {
             }
         }
     }
+
+    compilerOptions {
+        freeCompilerArgs.add("-Xconsistent-data-class-copy-visibility")
+    }
 }
 
 dependencies {
     "kspJvm"(libs.codegen.ksp.processor)
-
 }

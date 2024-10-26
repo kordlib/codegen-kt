@@ -7,41 +7,42 @@ import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
 plugins {
     org.jetbrains.dokka
     id("com.vanniktech.maven.publish.base")
-    org.jetbrains.kotlinx.`binary-compatibility-validator`
 }
+dokka {
+    dokkaSourceSets.configureEach {
+        suppressGeneratedFiles = false
+        jdkVersion = 8
 
-tasks {
-    withType<AbstractDokkaLeafTask> {
-        dokkaSourceSets.configureEach {
-            suppressGeneratedFiles = false
-            jdkVersion = 8
+        val readme = layout.projectDirectory.file("README.md").asFile
+        if (readme.exists()) {
+            includes.from(readme)
+        }
 
-            val readme = layout.projectDirectory.file("README.md").asFile
-            if (readme.exists()) {
-                includes.from(readme)
+        externalDocumentationLinks {
+            create("square/kotlinpoet") {
+                url("https://square.github.io/kotlinpoet/1.x/kotlinpoet/")
+                packageListUrl("https://gist.githubusercontent.com/DRSchlaubi/8cf8ab7628b6926e1520fa046ced9c4a/raw/4252fe08441a40171d64cd633abac46729c33724/package-list")
             }
+        }
 
-            externalDocumentationLink("https://square.github.io/kotlinpoet/1.x/kotlinpoet/kotlinpoet/")
+        sourceLink {
+            localDirectory = project.projectDir
+            remoteUrl = uri("https://github.com/kordlib/codegen/blob/main/${project.name}")
+            remoteLineSuffix = "#L"
+        }
 
-            sourceLink {
-                localDirectory = project.projectDir
-                remoteUrl = uri("https://github.com/kordlib/codegen/blob/main/${project.name}").toURL()
-                remoteLineSuffix = "#L"
-            }
+        perPackageOption {
+            // Ignore everything from square
+            @Language("RegExp")
+            matchingRegex = """com\.squareup\..*"""
+            suppress = true
+        }
 
-            perPackageOption {
-                // Ignore everything from square
-                @Language("RegExp")
-                matchingRegex = """com\.squareup\..*"""
-                suppress = true
-            }
-
-            perPackageOption {
-                // Ignore everything from square
-                @Language("RegExp")
-                matchingRegex = """dev.kord.codegen.ksp.processor.*"""
-                suppress = true
-            }
+        perPackageOption {
+            // Ignore everything from square
+            @Language("RegExp")
+            matchingRegex = """dev.kord.codegen.ksp.processor.*"""
+            suppress = true
         }
     }
 }
@@ -53,10 +54,10 @@ mavenPublishing {
     }
 
     plugins.withId("org.jetbrains.kotlin.jvm") {
-        configure(KotlinJvm(JavadocJar.Dokka("dokkaHtml")))
+        configure(KotlinJvm(JavadocJar.Dokka("dokkaGeneratePublicationHtml")))
     }
 
     plugins.withId("org.jetbrains.kotlin.multiplatform") {
-        configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaHtml")))
+        configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaGeneratePublicationHtml")))
     }
 }

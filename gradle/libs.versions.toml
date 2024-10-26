@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.0.0"
-kotlinpoet = "1.18.1"
-ksp = "2.0.0-1.0.24"
+kotlin = "2.0.21"
+kotlinpoet = "2.0.0"
+ksp = "2.0.21-1.0.26"
 
 # The compiled binary of codegen.kt we use to compile codegen.kt itself
 codegen-kt = "main-SNAPSHOT"
@@ -19,10 +19,10 @@ mockk = { group = "io.mockk", name = "mockk", version = "1.13.12" }
 
 kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
-dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "1.9.20" }
-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.28.0" }
+dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "2.0.0-Beta" }
+maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.30.0" }
 
-binary-compatibility-validator-plugin = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version = "0.15.0-Beta.2" }
+binary-compatibility-validator-plugin = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version = "0.16.3" }
 
 [bundles]
 pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin", "binary-compatibility-validator-plugin"]

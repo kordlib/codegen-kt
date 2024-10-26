@@ -39,11 +39,13 @@ fun MaybeReifiableFunction.reify(): FunSpec {
         // If the parent of the function is a class,
         // we need to define the reified function as an extension of that class
         // since we do not own the class
-        if (parentDeclaration is KSClassDeclaration) {
+        val parent = parentDeclaration
+        val receiver = extensionReceiver
+        if (parent is KSClassDeclaration) {
             // If that class has type parameters, we need to add those to the extension function
-            if (parentDeclaration.typeParameters.isNotEmpty()) {
-                val variables = parentDeclaration.typeParameters.map {
-                    it.toTypeVariableName(parentDeclaration.typeParameters.toTypeParameterResolver())
+            if (parent.typeParameters.isNotEmpty()) {
+                val variables = parent.typeParameters.map {
+                    it.toTypeVariableName(parent.typeParameters.toTypeParameterResolver())
                         .withoutVariance().also { typeVariable ->
                             TypeVariableName(nameAllocator.newName(typeVariable.name), bounds)
                         }
@@ -51,14 +53,14 @@ fun MaybeReifiableFunction.reify(): FunSpec {
                 addTypeVariables(variables)
                 // Then parameterize the type by the type variables
                 // e.g., public inline fun <T : Annotatable.Builder<T>> Annotatable.Builder<T>.x()
-                receiver(parentDeclaration.toClassName().parameterizedBy(variables))
+                receiver(parent.toClassName().parameterizedBy(variables))
             } else {
-                receiver(parentDeclaration.toClassName())
+                receiver(parent.toClassName())
             }
-        } else if (extensionReceiver != null) {
+        } else if (receiver != null) {
             // otherwise, just use the receiver of the actual function
-            if (!extensionReceiver.resolve().isError) {
-                receiver(extensionReceiver.toTypeName())
+            if (!receiver.resolve().isError) {
+                receiver(receiver.toTypeName())
             }
         }
 

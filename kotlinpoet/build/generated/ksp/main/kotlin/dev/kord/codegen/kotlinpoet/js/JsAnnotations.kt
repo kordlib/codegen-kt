@@ -10,6 +10,48 @@ import com.squareup.kotlinpoet.TypeSpec
 import dev.kord.codegen.kotlinpoet.addAnnotation
 
 /**
+ * Adds `ExperimentalJsStatic` to this [FileSpec]
+ */
+public fun FileSpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
+ * Adds `ExperimentalJsStatic` to this [FunSpec]
+ */
+public fun FunSpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
+ * Adds `ExperimentalJsStatic` to this [ParameterSpec]
+ */
+public fun ParameterSpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
+ * Adds `ExperimentalJsStatic` to this [TypeSpec]
+ */
+public fun TypeSpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
+ * Adds `ExperimentalJsStatic` to this [TypeAliasSpec]
+ */
+public fun TypeAliasSpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
+ * Adds `ExperimentalJsStatic` to this [PropertySpec]
+ */
+public fun PropertySpec.Builder.experimentalJsStatic() {
+    addAnnotation(ClassName("kotlin.js", "ExperimentalJsStatic"))
+}
+
+/**
  * Adds `ExperimentalJsReflectionCreateInstance` to this [FunSpec]
  */
 public fun FunSpec.Builder.experimentalJsReflectionCreateInstance() {
@@ -141,4 +183,18 @@ public fun TypeSpec.Builder.ignore() {
  */
 public fun PropertySpec.Builder.ignore() {
     addAnnotation(ClassName("kotlin.js", "JsExport", "Ignore"))
+}
+
+/**
+ * Adds `JsStatic` to this [FunSpec]
+ */
+public fun FunSpec.Builder.jsStatic() {
+    addAnnotation(ClassName("kotlin.js", "JsStatic"))
+}
+
+/**
+ * Adds `JsStatic` to this [PropertySpec]
+ */
+public fun PropertySpec.Builder.jsStatic() {
+    addAnnotation(ClassName("kotlin.js", "JsStatic"))
 }

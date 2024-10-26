@@ -32,7 +32,7 @@ kotlin {
         }
 
         named("generationSource") {
-            kotlin.srcDir(downloadSources.destinationDirectory.map { it.dir("commonMain") })
+            kotlin.srcDir(downloadSources.destinationDirectory.map { it.dir("jvmMain") })
         }
     }
 }

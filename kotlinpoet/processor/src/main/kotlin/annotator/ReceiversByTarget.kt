@@ -6,14 +6,19 @@ import com.squareup.kotlinpoet.*
 import dev.kord.codegen.ksp.annotations.AnnotationArguments
 import dev.kord.codegen.ksp.annotations.AnnotationArguments.Companion.arguments
 import dev.kord.codegen.ksp.getAnnotationByType
+import dev.kord.codegen.ksp.getAnnotationsByType
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty1
 
 val KSClassDeclaration.receiversByTarget: List<ClassName>
     get() {
-        val targetAnnotation = getAnnotationByType<Target>()
-        val targetsRaw = targetAnnotation.arguments<Target>()
-        val targets = targetsRaw[Target::allowedTargets]!!
+        val targets = if (getAnnotationsByType<Target>().none()) {
+            AnnotationTarget.entries
+        } else {
+            val targetAnnotation = getAnnotationByType<Target>()
+            val targetsRaw = targetAnnotation.arguments<Target>()
+            targetsRaw[Target::allowedTargets]!!
+        }
 
         return buildList {
             if (AnnotationTarget.FILE in targets) {

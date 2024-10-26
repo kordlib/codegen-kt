@@ -19,8 +19,7 @@ public inline fun TypeAliasSpec(
     return TypeAliasSpec.builder(name, type).apply(block).build()
 }
 
-@DelicateKotlinPoetApi(message =
-        "Java reflection APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
+@DelicateKotlinPoetApi(message = "Java reflection APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
 public inline fun TypeAliasSpec(
     name: String,
     type: Type,

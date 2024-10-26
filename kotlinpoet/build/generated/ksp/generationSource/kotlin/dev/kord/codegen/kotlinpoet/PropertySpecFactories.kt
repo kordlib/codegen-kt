@@ -51,8 +51,7 @@ public inline fun PropertySpec(
     return PropertySpec.builder(name, type, modifiers).apply(block).build()
 }
 
-@DelicateKotlinPoetApi(message =
-        "Java reflection APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
+@DelicateKotlinPoetApi(message = "Java reflection APIs don't give complete information on Kotlin types. Consider using the kotlinpoet-metadata APIs instead.")
 public inline fun PropertySpec(
     name: String,
     type: Type,

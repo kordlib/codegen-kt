@@ -19,8 +19,7 @@ public inline fun FileSpec.Builder.addCode(block: CodeBlockBuilderScope = {}): C
   return CodeBlock(block).also(::addCode)
 }
 
-public inline fun TypeSpec.Builder.addInitializerBlock(block: CodeBlockBuilderScope = {}):
-    CodeBlock {
+public inline fun TypeSpec.Builder.addInitializerBlock(block: CodeBlockBuilderScope = {}): CodeBlock {
   contract { callsInPlace(block, EXACTLY_ONCE) }
   return CodeBlock(block).also(::addInitializerBlock)
 }

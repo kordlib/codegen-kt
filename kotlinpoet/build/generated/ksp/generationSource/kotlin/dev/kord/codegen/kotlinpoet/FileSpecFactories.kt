@@ -10,8 +10,7 @@ import kotlin.contracts.contract
 
 public typealias FileSpecBuilderScope = @CodeGenDsl FileSpec.Builder.() -> Unit
 
-public fun FileSpec(packageName: String, typeSpec: TypeSpec): FileSpec = `get`(packageName,
-        typeSpec)
+public fun FileSpec(packageName: String, typeSpec: TypeSpec): FileSpec = `get`(packageName, typeSpec)
 
 public inline fun FileSpec(className: ClassName, block: FileSpecBuilderScope = {}): FileSpec {
     contract { callsInPlace(block, EXACTLY_ONCE) }

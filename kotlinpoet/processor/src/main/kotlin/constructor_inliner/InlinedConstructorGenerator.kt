@@ -5,6 +5,7 @@ import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.MemberName.Companion.member
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.ksp.toClassName
+import com.squareup.kotlinpoet.ksp.toTypeName
 import dev.kord.codegen.generator.utils.*
 import dev.kord.codegen.generator.builder_functions.FactoryFunction
 import dev.kord.codegen.kotlinpoet.FunSpec
@@ -116,7 +117,7 @@ private fun FactoryFunction.generateInlinedConstructor(
 
     return FunSpec(name) {
         if (constructor.forClass.declaration.typeParameters.isNotEmpty()) {
-            receiver(constructor.forClass.toClassName().parameterizedBy(STAR))
+            receiver(constructor.forClass.toTypeName())
         } else {
             receiver(constructor.forClass.toClassName())
         }

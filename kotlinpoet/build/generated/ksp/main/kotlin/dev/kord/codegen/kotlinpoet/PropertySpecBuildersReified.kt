@@ -19,9 +19,7 @@ public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(
   return addProperty(name, typeNameOf<T>(), modifiers = modifiers, block)
 }
 
-public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(vararg modifiers: KModifier,
-    noinline block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
-    addProperty(typeNameOf<T>(), modifiers = modifiers, block)
+public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(vararg modifiers: KModifier, noinline block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> = addProperty(typeNameOf<T>(), modifiers = modifiers, block)
 
 public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(
   name: String,
@@ -32,7 +30,4 @@ public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(
   return addProperty(name, typeNameOf<T>(), modifiers, block)
 }
 
-public inline fun <reified T>
-    MemberSpecHolder.Builder<*>.addProperty(modifiers: Iterable<KModifier>, noinline
-    block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> =
-    addProperty(typeNameOf<T>(), modifiers, block)
+public inline fun <reified T> MemberSpecHolder.Builder<*>.addProperty(modifiers: Iterable<KModifier>, noinline block: PropertySpecBuilderScope = {}): SubSpecDelegateProvider<PropertySpec> = addProperty(typeNameOf<T>(), modifiers, block)
