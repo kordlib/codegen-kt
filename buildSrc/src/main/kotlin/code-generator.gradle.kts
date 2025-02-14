@@ -8,7 +8,7 @@ plugins {
 }
 
 val codeGenerationExtension = extensions.create("codeGeneration", CodeGenerationExtension::class)
-val downloadSources by tasks.creating(DownloadSourceTask::class) {
+val downloadSources by tasks.registering(DownloadSourceTask::class) {
     dependency = codeGenerationExtension.dependency
 }
 
@@ -32,7 +32,7 @@ kotlin {
         }
 
         named("generationSource") {
-            kotlin.srcDir(downloadSources.destinationDirectory.map { it.dir("jvmMain") })
+            kotlin.srcDir(downloadSources.map { it.destinationDirectory.map { dir -> dir.dir("jvmMain") } })
         }
     }
 }

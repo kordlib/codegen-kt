@@ -17,8 +17,8 @@ allprojects {
         conf.resolutionStrategy.eachDependency {
             if (requested.group == "dev.kord.codegen") {
                 when (requested.name) {
-                    "kotlinpoet" -> useVersion("main-20240811.165308-18")
-                    "ksp" -> useVersion("main-20240811.165308-20")
+                    "kotlinpoet" -> useVersion("main-20240819.155859-19")
+                    "ksp" -> useVersion("main-20240819.155859-21")
                 }
             }
         }
@@ -26,17 +26,11 @@ allprojects {
 }
 
 dependencies {
-//    dokka(projects.ksp.annotations)
+    dokka(projects.ksp.annotations)
     dokka(projects.ksp)
     dokka(projects.kotlinpoet)
 }
 
 subprojects {
     configureJVMTarget()
-}
-
-tasks {
-    dokkaGeneratePublicationHtml {
-
-    }
 }

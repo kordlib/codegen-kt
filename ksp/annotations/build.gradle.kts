@@ -1,6 +1,5 @@
-@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
-
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     org.jetbrains.kotlin.multiplatform
@@ -13,12 +12,22 @@ base {
     archivesName = "ksp-annotations"
 }
 
+@OptIn(ExperimentalWasmDsl::class)
 kotlin {
     explicitApi()
 
     jvm()
     js(IR) {
         browser()
+        nodejs()
+    }
+
+    wasmJs {
+        browser()
+        nodejs()
+    }
+
+    wasmWasi {
         nodejs()
     }
 
