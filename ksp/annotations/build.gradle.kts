@@ -1,9 +1,8 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     org.jetbrains.kotlin.multiplatform
-//    `kord-publishing`
+    `kord-publishing`
     com.google.devtools.ksp
     id("com.vanniktech.maven.publish.base")
 }
