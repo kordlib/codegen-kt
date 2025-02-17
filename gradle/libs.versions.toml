@@ -13,7 +13,7 @@ kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref 
 
 codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version = "main-20240811.165308-18" }
 codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-20240811.165308-20" }
-codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-20240811.165308-19" }
+codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-20241026.144617-22" }
 
 mockk = { group = "io.mockk", name = "mockk", version = "1.13.16" }
 
