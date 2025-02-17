@@ -14,17 +14,17 @@ dependencies {
     api(libs.ksp.api)
     ksp(libs.codegen.kotlinpoet) {
         version {
-            strictly("main-20240811.165308-18")
+            strictly(libs.codegen.kotlinpoet.get().version!!)
         }
     }
     ksp(libs.codegen.ksp) {
         version {
-            strictly("main-20240811.165308-20")
+            strictly(libs.codegen.ksp.asProvider().get().version!!)
         }
     }
     ksp(libs.codegen.ksp.processor) {
         version {
-            strictly("main-20240811.165308-19")
+            strictly(libs.codegen.ksp.processor.get().version!!)
         }
     }
     testImplementation(libs.mockk)
