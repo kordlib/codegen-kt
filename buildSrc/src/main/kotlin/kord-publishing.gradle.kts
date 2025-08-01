@@ -60,4 +60,39 @@ mavenPublishing {
     plugins.withId("org.jetbrains.kotlin.multiplatform") {
         configure(KotlinMultiplatform(JavadocJar.Dokka("dokkaGeneratePublicationHtml")))
     }
+
+    pom {
+        name = "codegen.kt"
+        description = "Utitlities for generating Kotlin code"
+        url = "https://github.com/kordlib/codegen-kt"
+
+        organization {
+            name = "Kord"
+            url = "https://github.com/kordlib"
+        }
+
+        developers {
+            developer {
+                name = "The Kord Team"
+            }
+        }
+
+        issueManagement {
+            system = "GitHub"
+            url = "https://github.com/kordlib/kord/issues"
+        }
+
+        licenses {
+            license {
+                name = "MIT"
+                url = "https://opensource.org/licenses/MIT"
+            }
+        }
+
+        scm {
+            connection = "scm:git:ssh://github.com/kordlib/codegen-kt.git"
+            developerConnection = "scm:git:ssh://git@github.com:kordlib/codegen-kt.git"
+            url = "https://github.com/kordlib/codegen-kt.git"
+        }
+    }
 }
