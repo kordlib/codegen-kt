@@ -98,11 +98,11 @@ public final class dev/kord/codegen/kotlinpoet/FunctionSpecBuildersKt {
 
 public final class dev/kord/codegen/kotlinpoet/LambdaTypeNameFactoriesKt {
 	public static final fun LambdaTypeName (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;)Lcom/squareup/kotlinpoet/LambdaTypeName;
-	public static final fun LambdaTypeName (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;)Lcom/squareup/kotlinpoet/LambdaTypeName;
+	public static final fun LambdaTypeName (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Ljava/util/List;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 	public static final fun LambdaTypeName (Lcom/squareup/kotlinpoet/TypeName;[Lcom/squareup/kotlinpoet/ParameterSpec;Lcom/squareup/kotlinpoet/TypeName;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 	public static final fun LambdaTypeName (Lcom/squareup/kotlinpoet/TypeName;[Lcom/squareup/kotlinpoet/TypeName;Lcom/squareup/kotlinpoet/TypeName;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 	public static synthetic fun LambdaTypeName$default (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/LambdaTypeName;
-	public static synthetic fun LambdaTypeName$default (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/LambdaTypeName;
+	public static synthetic fun LambdaTypeName$default (Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Lcom/squareup/kotlinpoet/TypeName;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 	public static synthetic fun LambdaTypeName$default (Lcom/squareup/kotlinpoet/TypeName;[Lcom/squareup/kotlinpoet/ParameterSpec;Lcom/squareup/kotlinpoet/TypeName;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 	public static synthetic fun LambdaTypeName$default (Lcom/squareup/kotlinpoet/TypeName;[Lcom/squareup/kotlinpoet/TypeName;Lcom/squareup/kotlinpoet/TypeName;ILjava/lang/Object;)Lcom/squareup/kotlinpoet/LambdaTypeName;
 }
@@ -309,31 +309,11 @@ public final class dev/kord/codegen/kotlinpoet/delegate/SubSpecDelegateProvider 
 }
 
 public final class dev/kord/codegen/kotlinpoet/js/JsAnnotationsKt {
-	public static final fun experimentalJsCollectionsApi (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
-	public static final fun experimentalJsCollectionsApi (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
-	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
-	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/ParameterSpec$Builder;)V
-	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
-	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/TypeAliasSpec$Builder;)V
-	public static final fun experimentalJsReflectionCreateInstance (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/FileSpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/ParameterSpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/TypeAliasSpec$Builder;)V
 	public static final fun experimentalJsStatic (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
-	public static final fun ignore (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
-	public static final fun ignore (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
-	public static final fun ignore (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
-	public static final fun jsExport (Lcom/squareup/kotlinpoet/FileSpec$Builder;)V
-	public static final fun jsExport (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
-	public static final fun jsExport (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
-	public static final fun jsExport (Lcom/squareup/kotlinpoet/TypeSpec$Builder;)V
-	public static final fun jsFileName (Lcom/squareup/kotlinpoet/FileSpec$Builder;Ljava/lang/String;)V
-	public static final fun jsName (Lcom/squareup/kotlinpoet/FunSpec$Builder;Ljava/lang/String;)V
-	public static final fun jsName (Lcom/squareup/kotlinpoet/PropertySpec$Builder;Ljava/lang/String;)V
-	public static final fun jsName (Lcom/squareup/kotlinpoet/TypeSpec$Builder;Ljava/lang/String;)V
-	public static final fun jsStatic (Lcom/squareup/kotlinpoet/FunSpec$Builder;)V
-	public static final fun jsStatic (Lcom/squareup/kotlinpoet/PropertySpec$Builder;)V
 }
 

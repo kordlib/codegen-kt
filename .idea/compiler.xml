@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel target="21">
       <module name="codegen-kt.kotlinpoet.annotations" target="20" />
       <module name="codegen-kt.ksp-annotations" target="20" />
     </bytecodeTargetLevel>

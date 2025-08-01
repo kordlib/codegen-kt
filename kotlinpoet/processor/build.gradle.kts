@@ -4,7 +4,7 @@ plugins {
 
 kotlin {
     compilerOptions {
-        freeCompilerArgs.add("-Xcontext-receivers")
+        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xdont-warn-on-error-suppression")
     }
 }
 

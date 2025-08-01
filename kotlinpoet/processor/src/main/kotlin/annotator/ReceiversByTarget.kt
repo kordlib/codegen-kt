@@ -1,14 +1,11 @@
 package dev.kord.codegen.generator.annotator
 
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSType
 import com.squareup.kotlinpoet.*
-import dev.kord.codegen.ksp.annotations.AnnotationArguments
 import dev.kord.codegen.ksp.annotations.AnnotationArguments.Companion.arguments
 import dev.kord.codegen.ksp.getAnnotationByType
 import dev.kord.codegen.ksp.getAnnotationsByType
 import kotlin.reflect.KClass
-import kotlin.reflect.KProperty1
 
 val KSClassDeclaration.receiversByTarget: List<ClassName>
     get() {
@@ -17,7 +14,12 @@ val KSClassDeclaration.receiversByTarget: List<ClassName>
         } else {
             val targetAnnotation = getAnnotationByType<Target>()
             val targetsRaw = targetAnnotation.arguments<Target>()
-            targetsRaw[Target::allowedTargets]!!
+
+            @Suppress("INVISIBLE_REFERENCE")
+            val out = with(targetsRaw) { Target::allowedTargets.value }
+
+            @Suppress("UNCHECKED_CAST")
+            out as List<AnnotationTarget>
         }
 
         return buildList {

@@ -1,44 +1,72 @@
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 import org.jetbrains.kotlin.gradle.targets.jvm.tasks.KotlinJvmTest
 
 plugins {
-    `code-generator`
-    org.jetbrains.kotlinx.`binary-compatibility-validator`
+    org.jetbrains.kotlin.multiplatform
+    com.google.devtools.ksp
     `kord-publishing`
 }
 
-dependencies {
-    api(libs.kotlinpoet)
-    implementation(kotlin("reflect"))
-    compileOnly(projects.kotlinpoet.internalAnnotations)
-    ksp(projects.kotlinpoet.processor)
-
-    testImplementation(kotlin("test-junit5"))
-}
-
 kotlin {
+    explicitApi()
+
+    jvm()
+
     sourceSets {
         all {
             languageSettings.optIn("kotlin.contracts.ExperimentalContracts")
         }
+
+        commonMain {
+            dependencies {
+                api(libs.kotlinpoet)
+                compileOnly(projects.kotlinpoet.internalAnnotations)
+            }
+        }
+
+        jvmMain {
+            kotlin.srcDir("kotlinpoet-source/build/generated/ksp/jvm/jvmMain/kotlin")
+            kotlin.srcDir("build/generated/ksp/jvm/jvmMain/kotlin")
+
+            dependencies {
+                implementation(kotlin("reflect"))
+            }
+        }
+
+        jvmTest {
+            dependencies {
+                implementation(kotlin("test-junit5"))
+            }
+        }
+    }
+
+    compilerOptions {
+        optIn.addAll("dev.kord.codegen.kotlinpoet.CodeGenInternal", "kotlin.contracts.ExperimentalContracts")
+        freeCompilerArgs.add("-Xdont-warn-on-error-suppression")
+    }
+
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled = true
     }
 }
 
-codeGeneration {
-    fromVersionCatalog(libs.kotlinpoet)
-    packageName = "dev.kord.codegen.kotlinpoet"
+dependencies {
+    kspCommonMainMetadata(projects.kotlinpoet.processor)
+    "kspJvm"(projects.kotlinpoet.processor)
 }
 
 ksp {
-    arg("ignore-reification", listOf("Taggable.kt").joinToString(" "))
+    arg { listOf("package-name=dev.kord.codegen.kotlinpoet", "only-reify=com.squareup.kotlinpoet") }
 }
 
 tasks {
     withType<KotlinJvmTest> {
         useJUnitPlatform()
     }
-}
 
-apiValidation {
-    ignoredProjects.add("internal-annotations")
-    ignoredProjects.add("processor")
+    named("compileKotlinJvm") {
+        dependsOn(":kotlinpoet:kotlinpoet-source:kspKotlinJvm")
+    }
 }

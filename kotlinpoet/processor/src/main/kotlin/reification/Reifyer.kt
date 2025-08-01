@@ -1,5 +1,6 @@
 package dev.kord.codegen.generator.reification
 
+import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.Modifier
 import com.squareup.kotlinpoet.*
@@ -31,7 +32,7 @@ val TYPE_NAME_OF = MemberName("com.squareup.kotlinpoet", "typeNameOf")
  *  - Add reified type parameters
  *  - Add code calling the original function
  */
-fun MaybeReifiableFunction.reify(): FunSpec {
+fun MaybeReifiableFunction.reify(e: SymbolProcessorEnvironment): FunSpec {
     val nameAllocator = NameAllocator()
 
     return FunSpec(simpleName.asString()) {
@@ -64,7 +65,8 @@ fun MaybeReifiableFunction.reify(): FunSpec {
             }
         }
 
-        val typeVariableResolver = typeVariables.toTypeParameterResolver()
+        val typeVariableResolver = typeVariables
+            .toTypeParameterResolver(typeParameters.toTypeParameterResolver())
         returns(returnType!!.toTypeName(typeVariableResolver))
         val originalParameters = this@reify.parameters
             .asSequence()

@@ -11,10 +11,10 @@ import dev.kord.codegen.generator.builder_functions.FactoryFunction
 import dev.kord.codegen.kotlinpoet.FunSpec
 import dev.kord.codegen.kotlinpoet.withControlFlow
 
-context(FactoryFunction)
+context(factory: FactoryFunction)
 private fun FunSpec.Builder.getValueParametersList(packageName: String): CodeBlock {
-    val allParameters = if (hasBuilder) {
-        parameters + getBuilderParameter(packageName)
+    val allParameters = if (factory.hasBuilder) {
+        parameters + factory.getBuilderParameter(packageName)
     } else {
         parameters
     }

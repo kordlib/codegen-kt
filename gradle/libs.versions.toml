@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.1.10"
-kotlinpoet = "2.0.0"
-ksp = "2.1.10-1.0.29"
+kotlin = "2.2.0"
+kotlinpoet = "2.2.0"
+ksp = "2.2.0-2.0.2"
 
 # The compiled binary of codegen.kt we use to compile codegen.kt itself
 codegen-kt = "main-SNAPSHOT"
@@ -11,18 +11,16 @@ ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", v
 kotlinpoet = { group = "com.squareup", name = "kotlinpoet-jvm", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
 
-codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version = "main-20240811.165308-18" }
-codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-20240811.165308-20" }
-codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-20241026.144617-22" }
+codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version = "main-SNAPSHOT" }
+codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-SNAPSHOT" }
+codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-SNAPSHOT" }
 
-mockk = { group = "io.mockk", name = "mockk", version = "1.13.16" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.14.5" }
 
 kotlin-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-plugin = { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin", version.ref = "ksp" }
 dokka-plugin = { group = "org.jetbrains.dokka", name = "dokka-gradle-plugin", version = "2.0.0" }
-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.30.0" }
-
-binary-compatibility-validator-plugin = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version = "0.17.0" }
+maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version = "0.34.0" }
 
 [bundles]
-pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin", "binary-compatibility-validator-plugin"]
+pluginsForBuildSrc = ["kotlin-plugin", "ksp-plugin", "dokka-plugin", "maven-publish-plugin"]

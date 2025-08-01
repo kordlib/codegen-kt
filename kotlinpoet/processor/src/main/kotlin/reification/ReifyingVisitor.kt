@@ -71,7 +71,7 @@ object ReifyingVisitor : VisitorBase() {
                 .filter { it.isReifiable() && !it.isConstructor() && it.isPublic() }
                 .process()
                 .forEach {
-                    addFunction(it.reify())
+                    addFunction(it.reify(data))
                 }
         }.build()
 

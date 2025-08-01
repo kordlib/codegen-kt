@@ -19,10 +19,10 @@ import dev.kord.codegen.ksp.processor.ARGUMENTS_NOT_NULL
 import dev.kord.codegen.ksp.processor.getEithers
 import dev.kord.codegen.ksp.processor.getOtherIfDefault
 
-context(TypeSpec.Builder)
+context(builder: TypeSpec.Builder)
 @OptIn(KspExperimental::class)
 fun KSClassDeclaration.factoryFunction(packageName: String) {
-    addFunction(simpleName.asString()) {
+    builder.addFunction(simpleName.asString()) {
         val type = ClassName(packageName, toClassName().simpleNames)
         addKdoc("Creates an [%T] from an [%T].", type, KSAnnotation::class.asClassName())
         val annotation by addParameter<KSAnnotation>()

@@ -80,7 +80,6 @@ private fun KSClassDeclaration.dataClassSpec(
             |@see Companion.%L
         """.trimMargin(), toClassName(), simpleName.asString()
         )
-        addAnnotation<ConsistentCopyVisibility>()
         declarations
             .filterIsInstance<KSClassDeclaration>()
             .filter { it.classKind == ClassKind.ANNOTATION_CLASS }

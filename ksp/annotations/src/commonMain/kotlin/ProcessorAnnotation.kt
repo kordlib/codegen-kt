@@ -44,7 +44,7 @@ public annotation class ProcessorAnnotation(
  */
 @MustBeDocumented
 @Retention(AnnotationRetention.SOURCE)
-@Target(AnnotationTarget.FIELD)
+@Target(AnnotationTarget.FIELD, AnnotationTarget.PROPERTY)
 public annotation class NullIfDefault
 
 /**

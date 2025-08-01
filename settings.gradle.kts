@@ -16,6 +16,7 @@ rootProject.name = "codegen-kt"
 include(
     ":kotlinpoet:annotations",
     ":kotlinpoet:processor",
+    ":kotlinpoet:kotlinpoet-source",
     ":kotlinpoet",
     ":ksp:annotations",
     ":ksp:processor",

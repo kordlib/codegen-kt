@@ -1,6 +1,7 @@
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
+
 plugins {
     org.jetbrains.kotlin.jvm
-    org.jetbrains.kotlinx.`binary-compatibility-validator`
     `jvm-test-suite`
     `kord-publishing`
     com.google.devtools.ksp
@@ -8,6 +9,11 @@ plugins {
 
 kotlin {
     explicitApi()
+
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -45,11 +51,6 @@ testing {
             useJUnitJupiter()
         }
     }
-}
-
-apiValidation {
-    ignoredProjects.add("annotations")
-    ignoredProjects.add("processor")
 }
 
 tasks {

@@ -124,5 +124,5 @@ gradle-app.setting
 # Dokka
 docs/api
 
-!kotlinpoet/build/generated/
+!kotlinpoet/**/build/generated/
 **/api/generationSource
