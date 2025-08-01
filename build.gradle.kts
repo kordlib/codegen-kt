@@ -35,3 +35,9 @@ dependencies {
 subprojects {
     configureJVMTarget()
 }
+
+tasks {
+    dokkaGeneratePublicationHtml {
+        outputDirectory = layout.projectDirectory.dir("docs/api")
+    }
+}
