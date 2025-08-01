@@ -69,4 +69,12 @@ tasks {
     named("compileKotlinJvm") {
         dependsOn(":kotlinpoet:kotlinpoet-source:kspKotlinJvm")
     }
+
+    named("jvmSourcesJar") {
+        dependsOn(":kotlinpoet:kotlinpoet-source:kspKotlinJvm")
+    }
+
+    dokkaGeneratePublicationHtml {
+        dependsOn(":kotlinpoet:kotlinpoet-source:kspKotlinJvm")
+    }
 }
