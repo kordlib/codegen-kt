@@ -1,10 +1,10 @@
 [versions]
-kotlin = "2.2.0"
+kotlin = "2.2.20"
 kotlinpoet = "2.2.0"
-ksp = "2.2.0-2.0.2"
+ksp = "2.2.20-2.0.3"
 
 # The compiled binary of codegen.kt we use to compile codegen.kt itself
-codegen-kt = "main-SNAPSHOT"
+codegen-kt = "1.0.0"
 
 [libraries]
 ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }

@@ -5,7 +5,7 @@ plugins {
 
 allprojects {
     group = "dev.kord.codegen"
-    version = "1.0.0"
+    version = "1.0.1"
 
     repositories {
         mavenCentral()
@@ -17,9 +17,9 @@ allprojects {
         conf.resolutionStrategy.eachDependency {
             if (requested.group == "dev.kord.codegen") {
                 when (requested.name) {
-                    "kotlinpoet" -> useVersion("main-20241026.144617-21")
-                    "ksp-processor" -> useVersion("main-20241026.144617-22")
-                    "ksp" -> useVersion("main-20241026.144617-23")
+                    "kotlinpoet" -> useVersion(libs.versions.codegen.kt.get())
+                    "ksp-processor" -> useVersion(libs.versions.codegen.kt.get())
+                    "ksp" -> useVersion(libs.versions.codegen.kt.get())
                 }
             }
         }
