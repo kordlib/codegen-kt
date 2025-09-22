@@ -58,7 +58,7 @@ dependencies {
 }
 
 ksp {
-    arg { listOf("package-name=dev.kord.codegen.kotlinpoet", "only-reify=com.squareup.kotlinpoet") }
+    arg { listOf("package-name=dev.kord.codegen.kotlinpoet", "only-reify=dev.kord.codegen.kotlinpoet") }
 }
 
 tasks {
