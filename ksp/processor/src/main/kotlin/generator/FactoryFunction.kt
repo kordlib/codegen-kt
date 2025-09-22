@@ -25,7 +25,7 @@ fun KSClassDeclaration.factoryFunction(packageName: String) {
     builder.addFunction(simpleName.asString()) {
         val type = ClassName(packageName, toClassName().simpleNames)
         addKdoc("Creates an [%T] from an [%T].", type, KSAnnotation::class.asClassName())
-        val annotation by addParameter<KSAnnotation>()
+        val annotation by addParameter(KSAnnotation::class.asClassName())
         returns(type)
 
         addStatement("val arguments = %N.%M<%T>().%M()", annotation, ARGUMENTS, toClassName(), ARGUMENTS_NOT_NULL)
