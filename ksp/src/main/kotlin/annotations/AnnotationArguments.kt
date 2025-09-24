@@ -2,6 +2,7 @@ package dev.kord.codegen.ksp.annotations
 
 import com.google.devtools.ksp.isDefault
 import com.google.devtools.ksp.symbol.KSAnnotation
+import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSType
 import com.google.devtools.ksp.symbol.KSValueArgument
 import kotlin.reflect.KClass
@@ -74,10 +75,19 @@ public class AnnotationArguments<A : Annotation> private constructor(
         parameter.value as KSType?
 
     @JvmName("getEnum")
-    public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, T>): T? =
-        (parameter.value as KSType?)?.let {
-            enumValueOf<T>(it.declaration.simpleName.asString())
+    public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, T>): T? {
+        val constant = parameter.value ?: return null
+
+        val name = when (constant) {
+            // KSP V1
+            is KSType -> constant.declaration.simpleName.asString()
+            // KSP V2
+            is KSClassDeclaration -> constant.simpleName.asString()
+            else -> error("Unexpected type of $constant")
         }
+
+        return enumValueOf<T>(name)
+    }
 
     /**
      * Returns the value of [parameter] as a [List] of [Numbers][Number] or `null` if it is the default value
@@ -202,7 +212,7 @@ public class AnnotationArguments<A : Annotation> private constructor(
 
         @JvmName("getEnumArray")
         public inline operator fun <reified T : Enum<T>> get(parameter: KProperty1<A, Array<out T>>): List<T>? =
-            delegate[parameter]!!
+            delegate[parameter]
 
         public companion object {
             /**

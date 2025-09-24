@@ -11,9 +11,9 @@ ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", v
 kotlinpoet = { group = "com.squareup", name = "kotlinpoet-jvm", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
 
-codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version = "main-SNAPSHOT" }
-codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version = "main-SNAPSHOT" }
-codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version = "main-SNAPSHOT" }
+codegen-kotlinpoet = { group = "dev.kord.codegen", name = "kotlinpoet", version.ref = "codegen-kt" }
+codegen-ksp = { group = "dev.kord.codegen", name = "ksp", version.ref = "codegen-kt" }
+codegen-ksp-processor = { group = "dev.kord.codegen", name = "ksp-processor", version.ref = "codegen-kt" }
 
 mockk = { group = "io.mockk", name = "mockk", version = "1.14.5" }
 
